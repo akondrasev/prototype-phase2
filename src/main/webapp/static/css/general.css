@@ -1,0 +1,107 @@
+footer{
+    padding-top: 15px;
+    color: #eeeeee;
+    /*position: absolute;*/
+    bottom: 0;
+    height: 120px;
+    background-color: #333;
+    width: 100%;
+}
+ul{
+    list-style-type: circle;
+}
+.picture-wide, .picture-tall{
+    cursor: default;
+    color: #119;
+    right: 30px;
+    font-size: 13em;
+    position: absolute;
+    opacity: 0.1;
+    top: 30px;
+}
+.orange{
+    color: #ee5921;
+}
+.grey{
+    color: #ffffff;
+    opacity: 0.3;
+}
+.globus{
+    cursor: default;
+    color: #333;
+    font-size: 17em;
+}
+body, html {
+    width: 100%;
+    height: 100%;
+}
+body{
+    margin-top: 55px
+}
+
+.transperent{
+    opacity: 0.1;
+    animation-name: hiding;
+    animation-duration: 1s;
+}
+.transperent:hover{
+    opacity: 1;
+    animation-name: showing;
+    animation-duration: 1s;
+}
+.visible {
+    opacity: 1;
+    animation-name: showing;
+    animation-duration: 1s;
+}
+@keyframes hiding {
+    from {opacity: 1;}
+    to {opacity: 0.1;}
+}
+@keyframes showing {
+    from {opacity: 0.1;}
+    to {opacity: 1;}
+}
+
+.priority-border{
+    border: 5px solid rgba(0,0,0, 0.5);
+}
+
+.intro {
+    display: table;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    background-size: cover;
+    margin-bottom: 15px;
+}
+.intro h1, .intro .h1{
+    margin: 55px 0;
+    font-size: 45px;
+}
+.intro .intro-body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .very-large-button > .h1 {
+        font-size: 40px;
+    }
+    .very-large-button{
+        border-top: 10px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 10px solid rgba(0, 0, 0, 0.1);
+        border-right: 10px solid rgba(0, 0, 0, 0.1);
+        border-left: 10px solid rgba(0, 0, 0, 0.1);
+    }
+    .globus{
+        cursor: default;
+        color: #993f99;
+        font-size: 10em;
+    }
+    .intro h1, .intro .h1{
+        font-size: 35px;
+        margin: 25px 0;
+    }
+}
