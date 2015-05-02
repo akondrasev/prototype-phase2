@@ -12,7 +12,7 @@
     <constant name="struts.action.excludePattern" value="/static/.*?"/>
 
     <package name="root" extends="struts-default" namespace="/">
-        <action name="index" class="inc.action.HomeAction">
+        <action name="index" class="homeAction">
             <result name="success">WEB-INF/jsp/home.jsp</result>
         </action>
     </package>
