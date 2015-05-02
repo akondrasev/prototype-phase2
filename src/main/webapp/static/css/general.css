@@ -96,12 +96,16 @@ body{
         border-left: 10px solid rgba(0, 0, 0, 0.1);
     }
     .globus{
-        cursor: default;
-        color: #993f99;
         font-size: 10em;
     }
     .intro h1, .intro .h1{
         font-size: 35px;
         margin: 25px 0;
+    }
+}
+
+@media (max-device-height: 768px) {
+    .globus {
+        font-size: 7em;
     }
 }

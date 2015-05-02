@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
+    <title>Home</title>
 </head>
 
 <body>

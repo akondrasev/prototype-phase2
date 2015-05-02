@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>UI MANAGER - <decorator:title/></title>
+    <title>Event MANAGER - <decorator:title/></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap-cosmo.css"/>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/general.css"/>
