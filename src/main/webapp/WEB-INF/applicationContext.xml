@@ -7,4 +7,9 @@
        <bean id="authenticationInterceptor" class="inc.webapp.interceptor.AuthenticationInterceptor" scope="prototype"/>
 
        <bean id="homeAction" class="inc.webapp.action.base.HomeAction" scope="prototype"/>
+
+       <bean id="loginAction" class="inc.webapp.action.base.LoginAction" scope="prototype">
+              <property name="userDao" ref="userDao"/>
+       </bean>
+       <bean id="userDao" class="inc.db.dao.impl.UserDaoImpl"/>
 </beans>

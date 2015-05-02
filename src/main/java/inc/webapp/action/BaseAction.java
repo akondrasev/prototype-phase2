@@ -6,14 +6,17 @@ import inc.db.model.User;
 import inc.webapp.interceptor.UserAware;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
-public class BaseAction extends ActionSupport implements ServletRequestAware, ServletResponseAware, UserAware, ModelDriven<User> {
+public class BaseAction extends ActionSupport implements SessionAware, ServletRequestAware, ServletResponseAware, UserAware, ModelDriven<User> {
     protected HttpServletRequest request;
     protected HttpServletResponse response;
     protected User user;
+    protected Map<String, Object> session;
 
 
     public String execute(){
@@ -42,5 +45,10 @@ public class BaseAction extends ActionSupport implements ServletRequestAware, Se
     @Override
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
     }
 }

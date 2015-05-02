@@ -58,7 +58,7 @@
                             <li><a href="#"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
                         </s:if>
                         <s:if test="user.isGuest">
-                            <li><a href="#"><i class="glyphicon glyphicon-user"></i> Login</a></li>
+                            <li><a href="<s:url action="login" namespace="/"/>"><i class="glyphicon glyphicon-user"></i> Login</a></li>
                             <li><a href="#"><i class="glyphicon glyphicon-registration-mark"></i> Registration</a></li>
                         </s:if>
                     </ul>
