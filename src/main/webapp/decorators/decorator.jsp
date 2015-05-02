@@ -29,8 +29,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top visible">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -46,19 +45,22 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <span class="glyphicon glyphicon-user"></span> Onton <span class="badge">0</span>
+                        <span class="glyphicon glyphicon-user"></span> <s:property value="user.userName"/> <span class="badge">0</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Invites <span
-                                class="badge">0</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Requests <span
-                                class="badge">0</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-user"></i> Guests <span class="badge">0</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Edit Profile</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+                        <s:if test="!user.isGuest">
+                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Invites <span class="badge">0</span></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Requests <span class="badge">0</span></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-user"></i> Guests <span class="badge">0</span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Edit Profile</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+                        </s:if>
+                        <s:if test="user.isGuest">
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-registration-mark"></i> Registration</a></li>
+                        </s:if>
                     </ul>
                 </li>
             </ul>

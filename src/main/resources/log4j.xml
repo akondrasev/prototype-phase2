@@ -33,4 +33,8 @@
     <logger name="ognl">
         <level value="OFF" />
     </logger>
+    <logger name="org.springframework">
+        <level value="OFF" />
+    </logger>
+
 </log4j:configuration>
