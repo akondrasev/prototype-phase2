@@ -12,6 +12,17 @@
     <constant name="struts.action.excludePattern" value="/static/.*?"/>
 
     <package name="root" extends="struts-default" namespace="/">
+
+        <interceptors>
+            <interceptor name="authentication" class="authenticationInterceptor"/>
+            <interceptor-stack name="authStack">
+                <interceptor-ref name="authentication"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+
+        </interceptors>
+        <default-interceptor-ref name="authStack"/>
+
         <action name="index" class="homeAction">
             <result name="success">WEB-INF/jsp/home.jsp</result>
         </action>

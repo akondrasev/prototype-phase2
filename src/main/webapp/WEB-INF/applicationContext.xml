@@ -3,5 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-       <bean id="homeAction" class="inc.action.HomeAction" scope="prototype"/>
+
+       <bean id="authenticationInterceptor" class="inc.webapp.interceptor.AuthenticationInterceptor" scope="prototype"/>
+
+       <bean id="homeAction" class="inc.webapp.action.base.HomeAction" scope="prototype"/>
 </beans>

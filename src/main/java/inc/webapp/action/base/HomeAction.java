@@ -1,17 +1,18 @@
-package inc.action;
+package inc.webapp.action.base;
 
-import com.opensymphony.xwork2.ActionSupport;
+import inc.webapp.action.BaseAction;
 import org.apache.log4j.Logger;
 
-public class HomeAction extends ActionSupport{
+public class HomeAction extends BaseAction {
     private static Logger logger = Logger.getLogger(HomeAction.class);
 
     public String execute(){
         if(logger.isDebugEnabled()){
             logger.debug(String.format("HomeAction.execute()"));
+            logger.debug(String.format("user.userName = %s", user.getUserName()));
+            logger.debug(String.format("user.isGuest = %s", user.getIsGuest()));
         }
 
         return SUCCESS;
     }
-
 }
