@@ -45,7 +45,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <span class="glyphicon glyphicon-user"></span> <s:property value="user.userName"/> <span class="badge">0</span>
+                        <span class="glyphicon glyphicon-user"></span> <s:property value="user.userName"/> <span class="badge"><s:property value="user.newsCount"/></span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">

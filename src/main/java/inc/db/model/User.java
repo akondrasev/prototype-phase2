@@ -6,6 +6,8 @@ public class User {
     private String userEmail;
     private String userPassword;
     private String userBank;
+
+    private Long newsCount;
     private Boolean isGuest;
 
     public Long getUserId() {
@@ -54,5 +56,13 @@ public class User {
 
     public void setIsGuest(Boolean isGuest) {
         this.isGuest = isGuest;
+    }
+
+    public Long getNewsCount() {
+        return newsCount;
+    }
+
+    public void setNewsCount(Long newsCount) {
+        this.newsCount = newsCount;
     }
 }
