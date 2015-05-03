@@ -4,6 +4,11 @@ $(document).ready(function(){
     console.log("general.js - ready");
 
     var $navbarFixedTop = $(".navbar-fixed-top");
+    var $intro = $(".intro");
+
+    if($intro.length == 0){
+        $("html").addClass("sticky");
+    }
 
     $(window).scroll(function() {
         console.log("transperent navbar on scroll binded");

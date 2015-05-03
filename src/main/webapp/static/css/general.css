@@ -1,8 +1,23 @@
+html.sticky{
+    min-height: 100%;
+    height: auto;
+    position: relative;
+}
+
+html.sticky body{
+    margin-bottom: 120px;
+}
+
+html.sticky footer{
+    position: absolute;
+    bottom: 0;
+}
+
+
+
 footer{
     padding-top: 15px;
     color: #eeeeee;
-    /*position: absolute;*/
-    bottom: 0;
     height: 120px;
     background-color: #333;
     width: 100%;
