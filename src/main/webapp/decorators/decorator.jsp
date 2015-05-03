@@ -55,7 +55,7 @@
                             <li><a href="#"><i class="glyphicon glyphicon-user"></i> Guests <span class="badge">0</span></a></li>
                             <li class="divider"></li>
                             <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Edit Profile</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+                            <li><a href="<s:url action="logout" namespace="/"/>"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
                         </s:if>
                         <s:if test="user.isGuest">
                             <li><a href="<s:url action="login" namespace="/"/>"><i class="glyphicon glyphicon-user"></i> Login</a></li>
