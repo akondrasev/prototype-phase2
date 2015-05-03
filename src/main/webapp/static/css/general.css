@@ -101,15 +101,6 @@ body{
 }
 
 @media (max-width: 768px) {
-    .very-large-button > .h1 {
-        font-size: 40px;
-    }
-    .very-large-button{
-        border-top: 10px solid rgba(0, 0, 0, 0.1);
-        border-bottom: 10px solid rgba(0, 0, 0, 0.1);
-        border-right: 10px solid rgba(0, 0, 0, 0.1);
-        border-left: 10px solid rgba(0, 0, 0, 0.1);
-    }
     .globus{
         font-size: 10em;
     }
@@ -123,4 +114,13 @@ body{
     .globus {
         font-size: 7em;
     }
+}
+
+
+tr td label.label{
+    color: #666;
+    float: right;
+}
+table, th, tr {
+    border: 5px solid rgba(0,0,0,0);
 }

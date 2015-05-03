@@ -13,7 +13,7 @@
     <div class="row">
         <s:form theme="xhtml" cssClass="form-login" action="processLogin" namespace="/">
             <h2 class="form-signin-heading"><s:text name="login"/></h2>
-            <s:textfield key="login" cssClass="form-control"/>
+            <s:textfield key="email" cssClass="form-control"/>
             <s:password key="password" cssClass="form-control"/>
             <s:submit key="submit" class="btn btn-lg btn-primary btn-block"/>
             <s:actionerror/>
