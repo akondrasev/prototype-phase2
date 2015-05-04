@@ -136,7 +136,7 @@ tr td label.label{
     color: #666;
     float: right;
 }
-table, th, tr {
+table[class^=form-], th, tr {
     border: 5px solid rgba(0,0,0,0);
 }
 
@@ -150,4 +150,11 @@ table, th, tr {
 @keyframes erroring {
     from {border-color: #ffffff;}
     to {border-color: #ee1521;}
+}
+
+td.button-cell{
+    padding: 0 !important;
+}
+td.button-cell .btn{
+    margin: 0;
 }

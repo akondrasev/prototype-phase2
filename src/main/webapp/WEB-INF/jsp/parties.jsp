@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-striped table-hover">
                     <thead>
                     <tr>
                         <th><i class="glyphicon glyphicon-list-alt"></i> Name</th>
@@ -26,11 +26,11 @@
                     <tbody>
                         <s:iterator value="openParties">
                             <tr>
-                                <td><s:property value="partyName"/></td>
+                                <td class="button-cell"><button class="btn btn-warning btn-block"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyName"/></button></td>
                                 <td><s:property value="partyAddress"/></td>
                                 <td><s:property value="partyDate"/></td>
-                                <td><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyOrganizerName"/></td>
-                                <td><i class="glyphicon glyphicon-plus"></i> Participate</td>
+                                <td class="button-cell"><button class="btn btn-warning btn-block"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyOrganizerName"/></button></td>
+                                <td class="button-cell"><button class="btn btn-info btn-block"><i class="glyphicon glyphicon-plus"></i> Participate</button></td>
                             </tr>
                         </s:iterator>
                     </tbody>
