@@ -7,6 +7,10 @@ public class User {
     private String userPassword;
     private String userBank;
 
+    private Long invitesCount;
+    private Long guestsCount;
+    private Long requestsCount;
+
     private Long newsCount;
     private Boolean isGuest;
 
@@ -64,5 +68,29 @@ public class User {
 
     public void setNewsCount(Long newsCount) {
         this.newsCount = newsCount;
+    }
+
+    public Long getInvitesCount() {
+        return invitesCount;
+    }
+
+    public void setInvitesCount(Long invitesCount) {
+        this.invitesCount = invitesCount;
+    }
+
+    public Long getGuestsCount() {
+        return guestsCount;
+    }
+
+    public void setGuestsCount(Long guestsCount) {
+        this.guestsCount = guestsCount;
+    }
+
+    public Long getRequestsCount() {
+        return requestsCount;
+    }
+
+    public void setRequestsCount(Long requestsCount) {
+        this.requestsCount = requestsCount;
     }
 }

@@ -34,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<s:url action="index" namespace="/"/>"><i class="glyphicon glyphicon-calendar"></i> Event Manager</a>
+            <a class="navbar-brand" href="<s:url action="index" namespace="/"/>"><i class="glyphicon glyphicon-calendar"></i> <s:text name="logo"/></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -49,9 +49,9 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <s:if test="!user.isGuest">
-                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <s:text name="invites"/> <span class="badge"><s:property value="user.invites"/></span></a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <s:text name="requests"/> <span class="badge"><s:property value="user.requests"/></span></a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-user"></i> <s:text name="guests"/> <span class="badge"><s:property value="user.guests"/></span></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <s:text name="invites"/> <span class="badge"><s:property value="user.invitesCount"/></span></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <s:text name="requests"/> <span class="badge"><s:property value="user.requestsCount"/></span></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-user"></i> <s:text name="guests"/> <span class="badge"><s:property value="user.guestsCount"/></span></a></li>
                             <li class="divider"></li>
                             <li><a href="#"><i class="glyphicon glyphicon-cog"></i> <s:text name="edit.profile"/> </a></li>
                             <li><a href="<s:url action="logout" namespace="/"/>"><i class="glyphicon glyphicon-off"></i> <s:text name="logout"/></a></li>
@@ -72,7 +72,7 @@
 <footer>
     <div class="container">
         <p class="text-center">
-            Anton Kondrasev, 112670
+            <i class="glyphicon glyphicon-copyright-mark"></i> <s:text name="projectAuthors"/>
         </p>
     </div>
 </footer>

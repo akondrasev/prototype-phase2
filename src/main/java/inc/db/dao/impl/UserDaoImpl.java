@@ -27,6 +27,12 @@ public class UserDaoImpl implements UserDao{
         user.setUserName("Anton");
         user.setIsGuest(false);
         user.setNewsCount(3L);
+        user.setInvitesCount(1L);
+        user.setRequestsCount(1L);
+        user.setGuestsCount(1L);
+
+        user.setUserEmail("anton@mail.ru");
+
         return user;
     }
 
