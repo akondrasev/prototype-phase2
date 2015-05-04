@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4 col-xs-12">
             <div class="well bs-component">
-                <s:form cssClass="form-login" action="processRegistration" namespace="/" method="POST">
+                <s:form cssClass="form-login" action="processRegistration" namespace="/" method="POST" onsubmit="return check()">
 
                     <legend><h2><s:text name="registration"/></h2></legend>
                     <s:textfield key="userEmail" cssClass="form-control required"/>

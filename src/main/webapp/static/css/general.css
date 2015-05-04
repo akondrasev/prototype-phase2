@@ -140,9 +140,14 @@ table, th, tr {
     border: 5px solid rgba(0,0,0,0);
 }
 
-.required:after{
-    display: block;
-    content: '*';
-    width: 5px;
-    height: 5px;
+.error{
+    border-color: #ee1521;
+    background-color: #f8efc0;
+    animation-duration: 0.5s;
+    animation-name: erroring;
+    animation-iteration-count: 3;
+}
+@keyframes erroring {
+    from {border-color: #ffffff;}
+    to {border-color: #ee1521;}
 }

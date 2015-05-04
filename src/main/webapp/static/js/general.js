@@ -32,3 +32,19 @@ $(document).ready(function(){
         });
     });
 });
+
+function check(){
+    var $inputs = $("input.required");
+    $inputs.removeClass("error");
+    var isOk = true;
+
+    for(var i = 0; i < $inputs.length; i++){
+        var $input = $($inputs[i]);
+
+        if($input.val().length == 0){
+            $input.addClass("error");
+            isOk = false;
+        }
+    }
+    return isOk;
+}
