@@ -23,6 +23,13 @@
         </interceptors>
         <default-interceptor-ref name="authStack"/>
 
+        <action name="registration" class="registrationAction">
+            <result name="success">WEB-INF/jsp/registration.jsp</result>
+        </action>
+        <action name="processRegistration" class="registrationAction" method="processRegistration">
+            <result name="success">WEB-INF/jsp/registration.jsp</result>
+        </action>
+
         <action name="login" class="loginAction" method="execute">
             <result name="success">WEB-INF/jsp/login.jsp</result>
         </action>

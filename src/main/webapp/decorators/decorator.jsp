@@ -58,7 +58,7 @@
                         </s:if>
                         <s:if test="user.isGuest">
                             <li><a href="<s:url action="login" namespace="/"/>"><i class="glyphicon glyphicon-user"></i> <s:text name="login"/></a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-registration-mark"></i> <s:text name="registration"/></a></li>
+                            <li><a href="<s:url action="registration" namespace="/"/>"><i class="glyphicon glyphicon-registration-mark"></i> <s:text name="registration"/></a></li>
                         </s:if>
                     </ul>
                 </li>
@@ -72,7 +72,7 @@
 <footer>
     <div class="container">
         <p class="text-center">
-            © Anton Kondrasev, 112670
+            Anton Kondrasev, 112670
         </p>
     </div>
 </footer>

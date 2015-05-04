@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@
         <div class="container">
             <i class="glyphicon glyphicon-globe globus"></i>
 
-            <h1>Start to organize your parties!<br/> <small>We have 1000 users, who want it a lot!</small></h1>
+            <h1>Start to organize your parties!<br/> <small>We have <s:property value="usersCount"/> users, who want it a lot!</small></h1>
             <a class="btn btn-primary btn-lg page-scroll" href="#try" role="button">
                 <span class="h3">Start here</span><br>
                 <i class="glyphicon glyphicon-triangle-bottom"></i>
@@ -32,8 +33,9 @@
                     <li>Send invites</li>
                     <li>Even more...</li>
                 </ul>
-                <a href="#try" class="btn btn-info btn-lg">Create an Account<br><small class="grey">for free</small></a>
-                <br/><a href="#try" class="">or login</a>
+                <a href="<s:url action="registration" namespace="/"/>" class="btn btn-info btn-lg">Create an Account<br><small class="grey">for free</small></a>
+                <br/>
+                <a href="<s:url action="login" namespace="/"/>" class="">or login</a>
                 <i class="glyphicon glyphicon-user picture-tall"></i>
             </div>
         </div>
