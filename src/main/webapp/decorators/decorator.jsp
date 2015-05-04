@@ -34,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<s:url action="index" namespace="/"/>"><i class="glyphicon glyphicon-calendar"></i> <s:text name="logo"/></a>
+            <a class="navbar-brand" href="<s:url action="index" namespace="/"/>"><i class="glyphicon glyphicon-gift"></i> <s:text name="logo"/></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

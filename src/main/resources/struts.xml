@@ -56,6 +56,10 @@
             <result name="success">WEB-INF/jsp/home.jsp</result>
             <result name="input">WEB-INF/jsp/welcome.jsp</result>
         </action>
+
+        <action name="parties" class="partiesAction">
+            <result name="success">WEB-INF/jsp/parties.jsp</result>
+        </action>
     </package>
 
 </struts>

@@ -9,6 +9,11 @@
     <bean id="homeAction" class="inc.webapp.action.base.HomeAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
     </bean>
+
+    <bean id="partiesAction" class="inc.webapp.action.base.PartiesAction" scope="prototype">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
     <bean id="logoutAction" class="inc.webapp.action.base.LogoutAction" scope="prototype"/>
 
     <bean id="registrationAction" class="inc.webapp.action.base.RegistrationAction" scope="prototype">

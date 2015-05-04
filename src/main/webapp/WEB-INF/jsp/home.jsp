@@ -50,7 +50,7 @@
                     <li>See guests</li>
                     <li>Vote for presents</li>
                 </ul>
-                <a href="#try" class="btn btn-default">Start watching</a>
+                <a href="<s:url action="parties" namespace="/"/>" class="btn btn-default">Start watching</a>
                 <i class="glyphicon glyphicon-eye-open picture-wide"></i>
             </div>
         </div>
