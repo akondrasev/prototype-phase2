@@ -13,11 +13,11 @@
                 <s:form cssClass="form-login" action="processRegistration" namespace="/" method="POST">
 
                     <legend><h2><s:text name="registration"/></h2></legend>
-                    <s:textfield key="userEmail" cssClass="form-control"/>
-                    <s:password key="userPassword" cssClass="form-control"/>
+                    <s:textfield key="userEmail" cssClass="form-control required"/>
+                    <s:password key="userPassword" cssClass="form-control required"/>
 
-                    <s:textfield key="userName" cssClass="form-control"/>
-                    <s:textfield key="userBank" cssClass="form-control"/>
+                    <s:textfield key="userName" cssClass="form-control required"/>
+                    <s:textfield key="userBank" cssClass="form-control required"/>
 
                     <s:submit key="submit" class="btn btn-lg btn-primary btn-block"/>
                     <s:actionerror cssClass="red"/>

@@ -1,9 +1,11 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <title>Home</title>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/webapp/home.js"></script>
 </head>
 
 <body>

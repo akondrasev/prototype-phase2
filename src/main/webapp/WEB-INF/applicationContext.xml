@@ -12,6 +12,7 @@
 
     <bean id="partiesAction" class="inc.webapp.action.base.PartiesAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
+        <property name="partyDao" ref="partyDao"/>
     </bean>
 
     <bean id="logoutAction" class="inc.webapp.action.base.LogoutAction" scope="prototype"/>
@@ -24,4 +25,5 @@
         <property name="userDao" ref="userDao"/>
     </bean>
     <bean id="userDao" class="inc.db.dao.impl.UserDaoImpl"/>
+    <bean id="partyDao" class="inc.db.dao.impl.PartyDaoImpl"/>
 </beans>

@@ -139,3 +139,10 @@ tr td label.label{
 table, th, tr {
     border: 5px solid rgba(0,0,0,0);
 }
+
+.required:after{
+    display: block;
+    content: '*';
+    width: 5px;
+    height: 5px;
+}
