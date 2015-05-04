@@ -27,7 +27,10 @@
             <result name="success">WEB-INF/jsp/registration.jsp</result>
         </action>
         <action name="processRegistration" class="registrationAction" method="processRegistration">
-            <result name="success">WEB-INF/jsp/registration.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">registration</param>
+                <param name="namespace">/</param>
+            </result>
         </action>
 
         <action name="login" class="loginAction" method="execute">

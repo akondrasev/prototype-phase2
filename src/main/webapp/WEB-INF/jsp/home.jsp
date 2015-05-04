@@ -13,9 +13,10 @@
         <div class="container">
             <i class="glyphicon glyphicon-globe globus"></i>
 
-            <h1>Start to organize your parties!<br/> <small>We have <s:property value="usersCount"/> users, who want it a lot!</small></h1>
+            <h1>Start to organize your parties!<br/> <small>We have <s:property value="usersCount"/> users, who like parties!</small></h1>
             <a class="btn btn-primary btn-lg page-scroll" href="#try" role="button">
-                <span class="h3">Start here</span><br>
+                <span class="h3">Start here</span>
+                <br/>
                 <i class="glyphicon glyphicon-triangle-bottom"></i>
             </a>
         </div>
