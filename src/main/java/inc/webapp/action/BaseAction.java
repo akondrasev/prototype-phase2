@@ -15,6 +15,9 @@ import java.util.Map;
 public class BaseAction extends ActionSupport implements SessionAware, ServletRequestAware, ServletResponseAware, UserAware, ModelDriven<User> {
     protected HttpServletRequest request;
     protected HttpServletResponse response;
+
+    protected String submit;
+
     protected User user;
     protected Map<String, Object> session;
 
@@ -50,5 +53,13 @@ public class BaseAction extends ActionSupport implements SessionAware, ServletRe
     @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+
+    public String getSubmit() {
+        return submit;
+    }
+
+    public void setSubmit(String submit) {
+        this.submit = submit;
     }
 }

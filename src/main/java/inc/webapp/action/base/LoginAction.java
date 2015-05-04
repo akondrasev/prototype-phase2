@@ -17,8 +17,25 @@ public class LoginAction extends BaseAction {
     }
 
     public String processLogin(){
-        User foundUser = userDao.getUserByLoginData(user.getUserEmail(), user.getUserPassword());
-        //TODO logic
+        String email = user.getUserEmail();
+        String password = user.getUserPassword();
+
+        User foundUser = userDao.getUserByLoginData(email, password);
+
+        if(foundUser == null){
+
+            if(logger.isDebugEnabled()){
+                logger.debug(String.format("user '%s' not found", email));
+            }
+
+            addActionError(getText("user.not.found"));
+            return INPUT;
+        }
+
+        if(logger.isDebugEnabled()){
+            logger.debug(String.format("user '%s' logged in", email));
+        }
+
         session.put(XConstants.SESSION_ATTRIBUTE_KEY_USER, foundUser);
         return SUCCESS;
     }

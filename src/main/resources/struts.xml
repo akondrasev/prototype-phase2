@@ -44,6 +44,7 @@
                 <param name="actionName">index</param>
                 <param name="namespace">/</param>
             </result>
+            <result name="input">WEB-INF/jsp/login.jsp</result>
         </action>
         <action name="index" class="homeAction">
             <result name="success">WEB-INF/jsp/home.jsp</result>
