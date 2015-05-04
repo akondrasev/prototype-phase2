@@ -11,7 +11,7 @@
 <div class="intro">
     <div class="intro-body">
         <div class="container">
-            <i class="glyphicon glyphicon-globe globus"></i>
+            <i class="glyphicon glyphicon-gift globus"></i>
 
             <h1>Start to organize your parties!<br/> <small>We have <s:property value="usersCount"/> users, who like parties!</small></h1>
             <a class="btn btn-primary btn-lg page-scroll" href="#try" role="button">

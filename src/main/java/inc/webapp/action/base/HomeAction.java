@@ -12,13 +12,18 @@ public class HomeAction extends BaseAction {
     private Long usersCount;
 
     public String execute(){
-        if(logger.isDebugEnabled()){
-            logger.debug(String.format("user.userName = %s", user.getUserName()));
+
+        if(user.getIsGuest()){
+            if(logger.isDebugEnabled()){
+                logger.debug(String.format("user.userName = %s", user.getUserName()));
+            }
+
+            usersCount = userDao.getAllUsersCount();
+
+            return SUCCESS;
         }
 
-        usersCount = userDao.getAllUsersCount();
-
-        return SUCCESS;
+        return INPUT;
     }
 
     public Long getUsersCount() {

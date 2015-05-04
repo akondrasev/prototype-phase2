@@ -44,8 +44,6 @@ public class UserDaoImpl implements UserDao{
 
             user.setUserEmail("anton@mail.ru");
         }
-
-
         return user;
     }
 

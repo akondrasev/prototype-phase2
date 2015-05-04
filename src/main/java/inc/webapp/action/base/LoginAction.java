@@ -6,6 +6,8 @@ import inc.db.model.User;
 import inc.webapp.action.BaseAction;
 import org.apache.log4j.Logger;
 
+import java.util.Collection;
+
 public class LoginAction extends BaseAction {
     private static Logger logger = Logger.getLogger(LoginAction.class);
 
@@ -13,6 +15,10 @@ public class LoginAction extends BaseAction {
 
     @Override
     public String execute(){
+        setActionErrors((Collection<String>) session.get(XConstants.SESSION_ATTRIBUTE_KEY_ERROR));
+
+        session.remove(XConstants.SESSION_ATTRIBUTE_KEY_ERROR);
+
         return SUCCESS;
     }
 
@@ -29,6 +35,7 @@ public class LoginAction extends BaseAction {
             }
 
             addActionError(getText("user.not.found"));
+            session.put(XConstants.SESSION_ATTRIBUTE_KEY_ERROR, getActionErrors());
             return INPUT;
         }
 

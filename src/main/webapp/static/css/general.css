@@ -47,6 +47,15 @@ ul{
     color: #ffffff;
     opacity: 0.3;
 }
+.bordered{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.image{
+    cursor: default;
+    font-size: 5em;
+    display: block;
+    margin-bottom: 15px;
+}
 .globus{
     cursor: default;
     color: #333;
@@ -108,7 +117,7 @@ body{
 
 @media (max-width: 768px) {
     .globus{
-        font-size: 10em;
+        font-size: 7em;
     }
     .intro h1, .intro .h1{
         font-size: 35px;
@@ -116,7 +125,7 @@ body{
     }
 }
 
-@media (max-device-height: 768px) {
+@media (max-height: 768px) {
     .globus {
         font-size: 7em;
     }
