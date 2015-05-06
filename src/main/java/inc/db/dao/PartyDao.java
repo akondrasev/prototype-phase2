@@ -1,5 +1,6 @@
 package inc.db.dao;
 
+import inc.Utils;
 import inc.db.model.Party;
 
 import java.util.List;

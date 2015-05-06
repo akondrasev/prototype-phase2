@@ -25,12 +25,12 @@
 
                     <tbody>
                         <s:iterator value="openParties">
-                            <tr>
-                                <td class="button-cell"><button class="btn btn-warning btn-block"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyName"/></button></td>
+                            <tr class="small">
+                                <td><a href="#" id="<s:property value="partyId"/>"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyName"/></a></td>
                                 <td><s:property value="partyAddress"/></td>
                                 <td><s:property value="partyDate"/></td>
-                                <td class="button-cell"><button class="btn btn-warning btn-block"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyOrganizerName"/></button></td>
-                                <td class="button-cell"><button class="btn btn-info btn-block"><i class="glyphicon glyphicon-plus"></i> Participate</button></td>
+                                <td><a href="#" id="<s:property value="partyOrganizerId"/>"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyOrganizerName"/></a></td>
+                                <td><a href="#" id="<s:property value="partyId"/>"><i class="glyphicon glyphicon-plus"></i> Participate</a></td>
                             </tr>
                         </s:iterator>
                     </tbody>
