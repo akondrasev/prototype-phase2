@@ -26,7 +26,7 @@
 <body>
 
 
-<nav class="navbar navbar-inverse navbar-fixed-top visible">
+<nav class="navbar navbar-default navbar-fixed-top visible">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -77,6 +77,27 @@
         </p>
     </div>
 </footer>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                Content
+            </div>
+            <div class="modal-footer">
+                <button id="close-btn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="submit-btn" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
