@@ -37,25 +37,24 @@ $(document).ready(function(){
         });
     });
 
-
-    setInterval(getNewsCounts, 2000);
+    if(userId != null && userId != "") {
+        setInterval(getNewsCounts, 2000);
+    }
 });
 
-function getNewsCounts(){
-    if(userId != null && userId != ""){
-        $.ajax({
-            url:"ajax/news.jsp",
-            type: "POST",
-            dataType: "json",
-            data:{"personId" : userId },
-            success: function (response) {
-                $("#newsCount").html(response.newsCount);
-                $("#invitesCount").html(response.invitesCount);
-                $("#requestsCount").html(response.requestsCount);
-                $("#guestsCount").html(response.guestsCount);
-            }
-        });
-    }
+function getNewsCounts() {
+    $.ajax({
+        url: "ajax/news.jsp",
+        type: "POST",
+        dataType: "json",
+        data: {"personId": userId},
+        success: function (response) {
+            $("#newsCount").html(response.newsCount);
+            $("#invitesCount").html(response.invitesCount);
+            $("#requestsCount").html(response.requestsCount);
+            $("#guestsCount").html(response.guestsCount);
+        }
+    });
 }
 
 function check(){
