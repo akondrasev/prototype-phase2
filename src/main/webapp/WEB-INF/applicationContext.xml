@@ -36,7 +36,10 @@
     <bean id="loginAction" class="inc.webapp.action.base.LoginAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
     </bean>
-    <bean id="userDao" class="inc.db.dao.impl.UserDaoImpl"/>
-    <bean id="partyDao" class="inc.db.dao.impl.PartyDaoImpl"/>
-    <bean id="presentDao" class="inc.db.dao.impl.PresentDaoImpl"/>
+
+
+
+    <bean id="userDao" class="inc.db.dao.impl.UserDaoImpl" scope="singleton"/>
+    <bean id="partyDao" class="inc.db.dao.impl.PartyDaoImpl" scope="singleton"/>
+    <bean id="presentDao" class="inc.db.dao.impl.PresentDaoImpl" scope="singleton"/>
 </beans>
