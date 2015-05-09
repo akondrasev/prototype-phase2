@@ -1,5 +1,6 @@
 package inc.webapp.action;
 
+import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import inc.db.model.User;
@@ -21,8 +22,10 @@ public class BaseAction extends ActionSupport implements SessionAware, ServletRe
     protected User user;
     protected Map<String, Object> session;
 
+    protected Gson gson = new Gson();
 
-    public String execute(){
+
+    public String execute() throws Exception {
         return SUCCESS;
     }
 

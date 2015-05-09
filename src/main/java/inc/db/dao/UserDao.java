@@ -9,6 +9,7 @@ public interface UserDao {
     List<User> getPartyOrganizers(Long partyId);
     List<User> getPartyParticipants(Long partyId);
     User getUserByLoginData(String email, String password);
+    User getUserById(Long userId);
 
     void addUser(String userName, String userPassword, String email, String userBank);
 }

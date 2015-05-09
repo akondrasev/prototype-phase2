@@ -19,7 +19,13 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/general.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/modal.js"></script>
 
+
+    <script type="text/javascript">
+        var applicationContext = "${pageContext.request.contextPath}";
+        var pictureBaseUrl = applicationContext + "/static/img/presents/";
+    </script>
 
     <decorator:head/>
 </head>

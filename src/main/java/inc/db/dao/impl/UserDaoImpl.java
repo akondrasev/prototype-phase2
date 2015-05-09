@@ -48,6 +48,20 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
+    public User getUserById(Long userId) {
+        User user =new User();
+        user.setUserName("Anton");
+        user.setIsGuest(false);
+        user.setNewsCount(3L);
+        user.setInvitesCount(1L);
+        user.setRequestsCount(1L);
+        user.setGuestsCount(1L);
+        user.setUserEmail("anton@mail.ru");
+
+        return user;
+    }
+
+    @Override
     public void addUser(String userName, String userPassword, String email, String userBank) {
         if(logger.isDebugEnabled()){
             logger.debug(String.format("userName = %s", userName));

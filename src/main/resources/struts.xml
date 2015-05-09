@@ -62,4 +62,11 @@
         </action>
     </package>
 
+
+    <package name="ajax" extends="root" namespace="/ajax">
+
+        <action name="userData" class="userDataAjaxAction"/>
+        <action name="mostWantedPresentForParty" class="mostWantedPresentForParty"/>
+    </package>
+
 </struts>
