@@ -66,6 +66,7 @@
     <package name="ajax" extends="root" namespace="/ajax">
 
         <action name="userData" class="userDataAjaxAction"/>
+        <action name="news" class="newsAjaxAction"/>
         <action name="mostWantedPresentForParty" class="mostWantedPresentForParty"/>
     </package>
 

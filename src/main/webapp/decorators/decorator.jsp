@@ -31,7 +31,7 @@
 </head>
 <body>
 
-
+<span id="user-id-span" class="hidden"><s:property value="user.userId"/></span>
 <nav class="navbar navbar-default navbar-fixed-top visible">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -51,14 +51,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <span class="glyphicon glyphicon-user"></span> <s:property value="user.userName"/> <span class="badge"><s:property value="user.newsCount"/></span>
+                        <span class="glyphicon glyphicon-user"></span> <s:property value="user.userName"/> <span id="newsCount" class="badge"><s:property value="user.newsCount"/></span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <s:if test="!user.isGuest">
-                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <s:text name="invites"/> <span class="badge"><s:property value="user.invitesCount"/></span></a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <s:text name="requests"/> <span class="badge"><s:property value="user.requestsCount"/></span></a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-user"></i> <s:text name="guests"/> <span class="badge"><s:property value="user.guestsCount"/></span></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <s:text name="invites"/> <span id="invitesCount" class="badge"><s:property value="user.invitesCount"/></span></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <s:text name="requests"/> <span id="requestsCount" class="badge"><s:property value="user.requestsCount"/></span></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-user"></i> <s:text name="guests"/> <span id="guestsCount" class="badge"><s:property value="user.guestsCount"/></span></a></li>
                             <li class="divider"></li>
                             <li><a href="#"><i class="glyphicon glyphicon-cog"></i> <s:text name="edit.profile"/> </a></li>
                             <li><a href="<s:url action="logout" namespace="/"/>"><i class="glyphicon glyphicon-off"></i> <s:text name="logout"/></a></li>

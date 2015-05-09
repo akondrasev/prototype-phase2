@@ -1,6 +1,7 @@
 package inc.db.dao.impl;
 
 import inc.db.dao.UserDao;
+import inc.db.model.NewsCounts;
 import inc.db.model.User;
 import org.apache.log4j.Logger;
 
@@ -35,6 +36,7 @@ public class UserDaoImpl implements UserDao{
 
         if(email.equals("anton@mail.ru")){
             user = new User();
+            user.setUserId(1L);
             user.setUserName("Anton");
             user.setIsGuest(false);
             user.setNewsCount(3L);
@@ -51,6 +53,7 @@ public class UserDaoImpl implements UserDao{
     public User getUserById(Long userId) {
         User user =new User();
         user.setUserName("Anton");
+        user.setUserId(1L);
         user.setIsGuest(false);
         user.setNewsCount(3L);
         user.setInvitesCount(1L);
@@ -59,6 +62,25 @@ public class UserDaoImpl implements UserDao{
         user.setUserEmail("anton@mail.ru");
 
         return user;
+    }
+
+    @Override
+    public NewsCounts getNewsCountForUser(Long userId) {
+        NewsCounts newsCounts = new NewsCounts();
+
+
+        Long requestsCount =  Math.round(Math.random() * 20);
+        Long guestsCount =  Math.round(Math.random() * 20);
+        Long invitesCount =  Math.round(Math.random() * 20);
+
+        Long newsCount = requestsCount + guestsCount + invitesCount;
+
+        newsCounts.setNewsCount(newsCount);
+        newsCounts.setGuestsCount(guestsCount);
+        newsCounts.setInvitesCount(invitesCount);
+        newsCounts.setRequestsCount(requestsCount);
+
+        return newsCounts;
     }
 
     @Override

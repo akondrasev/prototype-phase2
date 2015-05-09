@@ -10,16 +10,16 @@ public class UserDataAjaxAction extends AjaxBaseAction {
 
     private UserDao userDao;
 
-    private Long userId;
+    private Long personId;
 
     @Override
     protected void makeJson() {
 
-        if(logger.isDebugEnabled()){
-            logger.debug(String.format("userId = %s", userId));
+        if (logger.isDebugEnabled()) {
+            logger.debug(String.format("personId = %s", personId));
         }
 
-        User user = userDao.getUserById(userId);
+        user = userDao.getUserById(personId);
         jsonResult = gson.toJson(user);
     }
 
@@ -31,11 +31,11 @@ public class UserDataAjaxAction extends AjaxBaseAction {
         this.userDao = userDao;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getPersonId() {
+        return personId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setPersonId(Long personId) {
+        this.personId = personId;
     }
 }

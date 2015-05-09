@@ -1,10 +1,15 @@
 console.log("general.js");
 
+var userId = null;
+
 $(document).ready(function(){
     console.log("general.js - ready");
 
     var $navbarFixedTop = $(".navbar-fixed-top");
     var $intro = $(".intro");
+
+    userId = $("#user-id-span").html();
+    console.log(userId);
 
     if($intro.length == 0){
         $("html").addClass("sticky");
@@ -31,7 +36,27 @@ $(document).ready(function(){
             event.preventDefault();
         });
     });
+
+
+    setInterval(getNewsCounts, 2000);
 });
+
+function getNewsCounts(){
+    if(userId != null && userId != ""){
+        $.ajax({
+            url:"ajax/news.jsp",
+            type: "POST",
+            dataType: "json",
+            data:{"personId" : userId },
+            success: function (response) {
+                $("#newsCount").html(response.newsCount);
+                $("#invitesCount").html(response.invitesCount);
+                $("#requestsCount").html(response.requestsCount);
+                $("#guestsCount").html(response.guestsCount);
+            }
+        });
+    }
+}
 
 function check(){
     var $inputs = $("input.required");

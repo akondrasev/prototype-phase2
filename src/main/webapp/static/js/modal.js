@@ -22,12 +22,12 @@ function presentModal(partyId){
 
 }
 
-function userModal(userId) {
+function userModal(personId) {
     $.ajax({
        url:"ajax/userData.jsp",
         type: "POST",
         dataType: "json",
-        data: {"userId":userId},
+        data: {"personId":personId},
         success: function (response) {
             var modalTitle = "User data";
             var modalContent = "Name: " + response.userName;
