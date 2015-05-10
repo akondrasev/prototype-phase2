@@ -40,13 +40,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<s:url action="index" namespace="/"/>"><i class="glyphicon glyphicon-gift"></i> <s:text name="logo"/></a>
+            <a class="navbar-brand" href="<s:url action="index" namespace="/"/>">
+                <i class="glyphicon glyphicon-gift"></i> <s:text name="logo"/>
+            </a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li id="home-link"><a href="<s:url action="index" namespace="/"/>"><i class="glyphicon glyphicon-home"></i> <s:text name="home"/></a></li>
-                <li id="parties-link"><a href="<s:url action="parties" namespace="/"/>"><i class="glyphicon glyphicon-th-list"></i> <s:text name="parties"/></a></li>
+                <li id="home-link">
+                    <a href="<s:url action="index" namespace="/"/>">
+                        <i class="glyphicon glyphicon-home"></i> <s:text name="home"/>
+                    </a>
+                </li>
+                <li id="parties-link">
+                    <a href="<s:url action="parties" namespace="/"/>">
+                        <i class="glyphicon glyphicon-th-list"></i> <s:text name="parties"/>
+                    </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
