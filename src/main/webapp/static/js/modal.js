@@ -13,7 +13,10 @@ function presentModal(partyId){
             var pictureUrl = pictureBaseUrl + response.pictureUrl;
             console.log(pictureUrl);
 
-            var modalContent = "<img src='" + pictureUrl + "'/>";
+            var modalContent = "";
+            //modalContent += "<div class'row'><div class='col-xs-6 col-md-3'>";
+            modalContent += "<img src='" + pictureUrl + "' class='thumbnail present-img'/>";
+            //modalContent += "</div></div>";
 
             makeModal(modalTitle, modalContent);
 

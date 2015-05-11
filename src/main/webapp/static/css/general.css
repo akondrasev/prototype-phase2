@@ -161,3 +161,7 @@ td.button-cell .btn{
 .modal-backdrop {
     z-index: 0 !important;
 }
+
+.present-img{
+    height: 180px;
+}
