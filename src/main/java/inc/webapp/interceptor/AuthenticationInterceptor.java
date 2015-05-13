@@ -6,18 +6,23 @@ import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 import inc.XConstants;
 import inc.db.model.User;
+import inc.webapp.action.BaseAction;
 
 import java.util.Map;
 
 public class AuthenticationInterceptor implements Interceptor {
+
+    @Override
     public void destroy() {
 
     }
 
+    @Override
     public void init() {
 
     }
 
+    @Override
     public String intercept(ActionInvocation actionInvocation) throws Exception {
         Map<String, Object> sessionAttributes = actionInvocation.getInvocationContext().getSession();
 
@@ -33,6 +38,10 @@ public class AuthenticationInterceptor implements Interceptor {
 
         if (action instanceof UserAware) {
             ((UserAware) action).setUser(user);
+        }
+
+        if (action instanceof BaseAction) {
+            ((BaseAction) action).reflectionTask();
         }
 
         return actionInvocation.invoke();
