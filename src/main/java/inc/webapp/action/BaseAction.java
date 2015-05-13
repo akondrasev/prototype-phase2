@@ -36,6 +36,12 @@ public class BaseAction extends ActionSupport implements SessionAware, ServletRe
 
     public void reflectionTask(){
 
+        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        if(logger.isDebugEnabled()){
+            logger.debug(classLoader);
+        }
+
+
         Field[] fields = XConstants.class.getDeclaredFields();
 
         for(Field field : fields){
