@@ -2,6 +2,7 @@ CREATE SEQUENCE person_user_id_seq;
 CREATE SEQUENCE present_present_id_seq;
 CREATE SEQUENCE party_party_id_seq;
 CREATE SEQUENCE comment_comment_id_seq;
+CREATE SEQUENCE news_id_seq;
 
 
 CREATE TABLE person (
@@ -43,4 +44,10 @@ CREATE TABLE comment (
   PRIMARY KEY( COMMENT_ID ),
   CONSTRAINT fk_comment_author FOREIGN KEY (COMMENT_AUTHOR) REFERENCES person (USER_ID),
   CONSTRAINT fk_comment_for_present FOREIGN KEY (COMMENT_FOR_PRESENT) REFERENCES present (PRESENT_ID)
+);
+
+CREATE TABLE news (
+  news_id NUMERIC(10,0) NOT NULL DEFAULT nextval('news_id_seq'),
+  user_email VARCHAR(50) NOT NULL,
+  party_id INT NOT NULL
 );
