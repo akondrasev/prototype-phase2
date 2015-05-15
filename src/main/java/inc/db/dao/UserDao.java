@@ -13,6 +13,8 @@ public interface UserDao {
     User getUserByLoginData(String email, String password);
     User getUserById(Long userId);
 
+    void editUser(User user) throws IllegalAccessException;
+
     NewsCounts getNewsCountForUser(Long userId);
 
     void addUser(String userName, String userPassword, String email, String userBank);

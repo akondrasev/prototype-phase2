@@ -9,6 +9,9 @@
     <bean id="homeAction" class="inc.webapp.action.base.HomeAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
     </bean>
+    <bean id="profileAction" class="inc.webapp.action.base.ProfileAction" scope="prototype">
+        <property name="userDao" ref="userDao"/>
+    </bean>
 
     <bean id="mostWantedPresentForParty" class="inc.webapp.action.ajax.MostWantedPresentForPartyAjaxAction" scope="prototype">
         <property name="presentDao" ref="presentDao"/>

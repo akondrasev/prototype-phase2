@@ -93,8 +93,10 @@
                             <li class="divider"></li>
 
                             <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-cog"></i> <s:text name="edit.profile"/> </a></li>
+                                <a href="<s:url action="profile" namespace="/"/>">
+                                    <i class="glyphicon glyphicon-cog"></i> <s:text name="edit.profile"/>
+                                </a>
+                            </li>
                             <li>
                                 <a href="<s:url action="logout" namespace="/"/>">
                                     <i class="glyphicon glyphicon-off"></i> <s:text name="logout"/>

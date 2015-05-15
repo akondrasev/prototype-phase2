@@ -5,6 +5,7 @@ import inc.db.model.NewsCounts;
 import inc.db.model.User;
 import org.apache.log4j.Logger;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao{
@@ -43,6 +44,7 @@ public class UserDaoImpl implements UserDao{
             user.setInvitesCount(1L);
             user.setRequestsCount(1L);
             user.setGuestsCount(1L);
+            user.setUserBank("1215464789795132");
 
             user.setUserEmail("anton@mail.ru");
         }
@@ -60,8 +62,22 @@ public class UserDaoImpl implements UserDao{
         user.setRequestsCount(1L);
         user.setGuestsCount(1L);
         user.setUserEmail("anton@mail.ru");
+        user.setUserBank("1215464789795132");
 
         return user;
+    }
+
+    @Override
+    public void editUser(User user) throws IllegalAccessException {
+        Field[] fields = user.getClass().getDeclaredFields();
+        if(logger.isDebugEnabled()){
+            for(Field field : fields){
+                field.setAccessible(true);
+
+                Object value = field.get(user);
+                logger.debug(String.format("%s = %s", field.getName(), value));
+            }
+        }
     }
 
     @Override

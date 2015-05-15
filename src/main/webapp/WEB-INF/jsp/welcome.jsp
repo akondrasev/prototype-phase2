@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <title>Home</title>
+    <title>Welcome</title>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/webapp/welcome.js"></script>
 </head>
 
 <body>
@@ -14,7 +15,7 @@
         <div class="col-md-12">
             <h1>Hi, <s:property value="user.userName"/>!</h1>
             <ul>
-                <li>You can manage your profile <a href="#">here</a></li>
+                <li>You can manage your profile <a href="<s:url action="profile" namespace="/"/>">here</a></li>
             </ul>
         </div>
     </div>

@@ -41,7 +41,7 @@ public class AuthenticationInterceptor implements Interceptor {
         }
 
         if (action instanceof BaseAction) {
-            ((BaseAction) action).reflectionTask();
+//            ((BaseAction) action).reflectionTask();
         }
 
         return actionInvocation.invoke();

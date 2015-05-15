@@ -1,7 +1,6 @@
 package inc.webapp.action.ajax;
 
 import inc.db.dao.UserDao;
-import inc.db.model.User;
 import inc.webapp.action.AjaxBaseAction;
 import org.apache.log4j.Logger;
 
