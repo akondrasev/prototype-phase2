@@ -6,7 +6,8 @@ $(document).ready(function(){
     var $dateInput = $('input[name=partyDate]');
 
     $dateInput.datetimepicker({
-        format: dateFormat
+        format: dateFormat,
+        sideBySide: true
     });
 
 });
