@@ -74,6 +74,26 @@
         <action name="parties" class="partiesAction">
             <result name="success">WEB-INF/jsp/parties.jsp</result>
         </action>
+
+        <action name="party" class="eventAction">
+            <result name="success">WEB-INF/jsp/party.jsp</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">login</param>
+                <param name="namespace">/</param>
+            </result>
+        </action>
+
+        <action name="processParty" class="eventAction" method="process">
+            <result name="success" type="redirectAction">
+                <param name="actionName">party</param>
+                <param name="namespace">/</param>
+            </result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">login</param>
+                <param name="namespace">/</param>
+            </result>
+        </action>
+
     </package>
 
 

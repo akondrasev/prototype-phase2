@@ -11,16 +11,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Event MANAGER - <decorator:title/></title>
+
+    <%--bootstrap--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap-cosmo.css"/>
 
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/plugins/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/plugins/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.js"></script>
+
+    <%--datepicker--%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/plugins/moment.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/plugins/datepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/bootstrap-datetimepicker.css"/>
+
+<%--main--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/general.css"/>
 
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery-1.11.2.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/general.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/modal.js"></script>
-
 
     <script type="text/javascript">
         var applicationContext = "${pageContext.request.contextPath}";

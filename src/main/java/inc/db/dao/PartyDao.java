@@ -9,4 +9,6 @@ public interface PartyDao {
     List<Party> getPartiesWithUser(Long userId);
     Party getPartyById(Long partyId);
     List<Party> getOpenedParties();
+
+    void createEvent(Party party);
 }

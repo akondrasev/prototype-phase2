@@ -56,4 +56,9 @@ public class PartyDaoImpl implements PartyDao {
     public List<Party> getOpenedParties() {
         return parties;
     }
+
+    @Override
+    public void createEvent(Party party) {
+
+    }
 }
