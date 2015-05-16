@@ -12,19 +12,20 @@
 
     <title>Event MANAGER - <decorator:title/></title>
 
-    <%--bootstrap--%>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap-cosmo.css"/>
+    <%--bootstrap & jquery--%>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/bootstrap-cosmo.css"/>
 
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/plugins/jquery-1.11.2.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/plugins/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
     <%--datepicker--%>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/plugins/moment.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/plugins/datepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/bootstrap-datetimepicker.css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/d004434a5ff76e7b97c8b07c01f34ca69e635d97/src/js/bootstrap-datetimepicker.js"></script>
 
-<%--main--%>
+    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/d004434a5ff76e7b97c8b07c01f34ca69e635d97/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+    <%--main--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/general.css"/>
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/general.js"></script>

@@ -9,14 +9,13 @@ $(document).ready(function(){
     var $intro = $(".intro");
 
     userId = $("#user-id-span").html();
-    console.log(userId);
 
     if($intro.length == 0){
         $("html").addClass("sticky");
     }
 
+    console.log("transperent navbar on scroll binded");
     $(window).scroll(function() {
-        console.log("transperent navbar on scroll binded");
         if ($(".navbar").offset().top > 75) {
             $navbarFixedTop.addClass("transperent");
             $navbarFixedTop.removeClass("visible");
@@ -58,15 +57,16 @@ function getNewsCounts() {
 }
 
 function check(){
+    var errorClass = "error";
     var $inputs = $("input.required");
-    $inputs.removeClass("error");
+    $inputs.removeClass(errorClass);
     var isOk = true;
 
     for(var i = 0; i < $inputs.length; i++){
         var $input = $($inputs[i]);
 
         if($input.val().length == 0){
-            $input.addClass("error");
+            $input.addClass(errorClass);
             isOk = false;
         }
     }
