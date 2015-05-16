@@ -6,7 +6,7 @@ $(document).ready(function(){
     var $dateInput = $('input[name=partyDate]');
 
     $dateInput.datetimepicker({
-        format: 'DD.MM.YYYY HH:mm'
+        format: dateFormat
     });
 
 });
