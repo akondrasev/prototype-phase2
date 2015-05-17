@@ -27,7 +27,9 @@
                     <s:submit key="submit" class="btn btn-lg btn-primary btn-block"/>
                     <s:actionerror cssClass="red"/>
                     <s:actionmessage cssClass="green"/>
-                    <s:a action="index" namespace="/"><s:text name="back.to.welcome"/></s:a>
+                    <s:a action="index" namespace="/">
+                        <i class=" glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>
+                    </s:a>
                 </s:form>
             </div>
         </div>
