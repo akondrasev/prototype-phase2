@@ -56,6 +56,12 @@ function getNewsCounts() {
     });
 }
 
+function makeButtonForModal(button){
+    //data-toggle="modal" data-target="#myModal"
+    button.attr("data-toggle","modal");
+    button.attr("data-target","#myModal");
+}
+
 function check(){
     var errorClass = "error";
     var $inputs = $("input.required");

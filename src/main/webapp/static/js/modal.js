@@ -40,7 +40,21 @@ function userModal(personId) {
 
 }
 
+
+function addPresentModal(){
+    var modalTitle = "Add Present";
+    var modalContent = "<p>Params</p>";
+
+    function savePresent(){
+        console.log("save successful");
+        $("#close-btn", "#myModal").click();
+    }
+
+    makeModal(modalTitle, modalContent, savePresent);
+}
+
 function makeModal(title, content, defaultBtnFunction){
+    console.log("makeModal called")
     var $primaryBtn = $(".modal .btn-primary");
     var $title = $(".modal .modal-title");
     var $content = $(".modal .modal-body");
@@ -52,6 +66,10 @@ function makeModal(title, content, defaultBtnFunction){
 
     if(defaultBtnFunction == null){
         $primaryBtn.hide();
+    } else {
+        $primaryBtn.click(function(e){
+            defaultBtnFunction.call();
+        });
     }
 
     $title.html(title);
