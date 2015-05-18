@@ -20,22 +20,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 col-md-offset-1 col-xs-12">
-            <div class="text-center">
-                <a href="<s:url action="party" namespace="/"/>">
-                    'create' party
-                </a>
-            </div>
-        </div>
-        <div class="col-md-3 col-md-offset-1 col-xs-12">
-            <div class="text-center">
-                'see' parties
-            </div>
-        </div>
-        <div class="col-md-3 col-md-offset-1 col-xs-12">
-            <div class="text-center">
-                '???'
-            </div>
+
+        <div class="col-xs-6 col-md-3">
+            <a href="<s:url action="party" namespace="/"/>" class="thumbnail">
+                <img src="..." alt="...">
+            </a>
         </div>
     </div>
 </div>
