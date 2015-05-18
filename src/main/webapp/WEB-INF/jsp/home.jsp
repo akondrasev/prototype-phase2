@@ -39,7 +39,7 @@
                 <a href="<s:url action="registration" namespace="/"/>" class="btn btn-info btn-lg">Create an Account<br><small class="grey">for free</small></a>
                 <br/>
                 <a href="<s:url action="login" namespace="/"/>" class="">or login</a>
-                <i class="glyphicon glyphicon-user picture-tall"></i>
+                <i class="glyphicon glyphicon-user picture"></i>
             </div>
         </div>
 
@@ -53,7 +53,7 @@
                     <li>Vote for presents</li>
                 </ul>
                 <a href="<s:url action="parties" namespace="/"/>" class="btn btn-default">Start watching</a>
-                <i class="glyphicon glyphicon-eye-open picture-wide"></i>
+                <i class="glyphicon glyphicon-eye-open picture"></i>
             </div>
         </div>
     </div>

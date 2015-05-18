@@ -25,7 +25,10 @@ footer{
 ul{
     list-style-type: circle;
 }
-.picture-wide, .picture-tall{
+.welcome{
+    text-align: center;
+}
+.picture{
     cursor: default;
     color: #119;
     right: 30px;
