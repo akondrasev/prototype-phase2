@@ -62,17 +62,26 @@ function makeButtonForModal(button){
     button.attr("data-target","#myModal");
 }
 
-function check(){
+function check(context){
     var errorClass = "error";
-    var $inputs = $("input.required");
+    var $inputs = null;
+
+    if(context == null){
+        $inputs = $("input");
+    } else {
+        $inputs = $("input", context);
+    }
+
     $inputs.removeClass(errorClass);
     var isOk = true;
 
     for(var i = 0; i < $inputs.length; i++){
         var $input = $($inputs[i]);
+        var alarm = "";
 
-        if($input.val().length == 0){
+        if($input.hasClass("required") && $input.val().length == 0){
             $input.addClass(errorClass);
+            alarm += "Must be filled. ";
             isOk = false;
         }
 
@@ -80,9 +89,13 @@ function check(){
             var value = $input.val();
             if(!$.isNumeric(value)){
                 $input.addClass(errorClass);
-                $input.val(value + " (Enter an integer)");
+                alarm += "Must be an Integer. ";
                 isOk = false;
             }
+        }
+
+        if(alarm != ""){
+            $input.notify(alarm);
         }
     }
     return isOk;

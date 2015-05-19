@@ -17,6 +17,10 @@
         <property name="partyDao" ref="partyDao"/>
     </bean>
 
+    <bean id="presentSaveAjaxAction" class="inc.webapp.action.ajax.PresentSaveAjaxAction" scope="prototype">
+        <property name="presentDao" ref="presentDao"/>
+    </bean>
+
     <bean id="mostWantedPresentForParty" class="inc.webapp.action.ajax.MostWantedPresentForPartyAjaxAction" scope="prototype">
         <property name="presentDao" ref="presentDao"/>
     </bean>

@@ -37,17 +37,55 @@ function userModal(personId) {
             makeModal(modalTitle, modalContent);
         }
     });
-
 }
 
 
 function addPresentModal(){
     var modalTitle = "Add Present";
-    var modalContent = "<p>Params</p>";
+    var modalContent = "";
+
+    modalContent += "<form class='form-horizontal'><fieldset>";
+
+    modalContent += "<div class='form-group'>";
+    modalContent += "<label for='presentName' class='control-label col-lg-4'>Name:</label>";
+    modalContent += "<div class='col-lg-6'>";
+    modalContent += "<input type='text' name='presentName' id='presentName' class='form-control required'/>";
+    modalContent += "</div></div>";
+
+    modalContent += "<div class='form-group'>";
+    modalContent += "<label for='presentCost' class='control-label col-lg-4'>Cost:</label>";
+    modalContent += "<div class='col-lg-6'>";
+    modalContent += "<input type='integer' name='presentCost' id='presentCost' class='form-control required'/>";
+    modalContent += "</div></div>";
+
+    modalContent += "<div class='form-group'>";
+    modalContent += "<label for='presentPictureUrl' class='control-label col-lg-4'>Picture Url:</label>";
+    modalContent += "<div class='col-lg-6'>";
+    modalContent += "<input type='text' name='presentPictureUrl' id='presentPictureUrl' class='form-control'/>";
+    modalContent += "</div></div>";
+
+    modalContent += "</fieldset></form>";
+
 
     function savePresent(){
-        console.log("save successful");
-        $("#close-btn", "#myModal").click();
+
+        if(!check($("#myModal"))){
+            return;
+        }
+
+        $.ajax({
+            url:"ajax/savePresent.jsp",
+            data:{
+                "presentName":$("#presentName").val(),
+                "presentCost":$("#presentCost").val(),
+                "presentPictureUrl":$("#presentPictureUrl").val()
+            },
+            type:"POST",
+            success: function (response) {
+                $.notify(response, "success");
+                $("#close-btn", "#myModal").click();
+            }
+        });
     }
 
     makeModal(modalTitle, modalContent, savePresent);

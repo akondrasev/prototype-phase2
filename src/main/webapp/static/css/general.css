@@ -168,3 +168,7 @@ td.button-cell .btn{
 .present-img{
     height: 180px;
 }
+
+#myModal input{
+    width: 180px;
+}

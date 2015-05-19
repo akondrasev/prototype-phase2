@@ -28,6 +28,9 @@
     <%--main--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/general.css"/>
 
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap/js/notify.js"></script>
+
+
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/general.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/modal.js"></script>
 
@@ -36,6 +39,8 @@
         var pictureBaseUrl = applicationContext + "/static/img/presents/";
 
         var dateFormat = "DD.MM.YYYY HH:mm";
+
+        $.notify.defaults({globalPosition:"bottom right", elementPosition:"right", autoHideDelay:"5000"});
     </script>
 
     <decorator:head/>

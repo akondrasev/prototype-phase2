@@ -6,7 +6,7 @@ public abstract class AjaxBaseAction extends BaseAction{
 
     protected String jsonResult;
 
-    public String execute(){
+    public String execute() throws IOException {
 
         makeJson();
 
@@ -22,7 +22,7 @@ public abstract class AjaxBaseAction extends BaseAction{
         return NONE;
     }
 
-    protected abstract void makeJson();
+    protected abstract void makeJson() throws IOException;
 
     public String getJsonResult() {
         return jsonResult;

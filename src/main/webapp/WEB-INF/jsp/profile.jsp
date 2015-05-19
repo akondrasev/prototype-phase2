@@ -11,15 +11,18 @@
 <body>
 
 <div class="container">
-    <div class="row">
 
+    <s:div class="row">
         <s:div class="col-md-3 col-md-offset-0 col-xs-12">
             <s:a action="index" namespace="/" class="btn btn-default btn-lg btn-block">
                 <i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>
             </s:a>
         </s:div>
+    </s:div>
 
-        <div class="col-md-4 col-md-offset-1 col-xs-12">
+    <div class="row">
+
+        <div class="col-md-4 col-md-offset-4 col-xs-12">
             <s:form cssClass="form-login" action="processEditProfile" namespace="/" method="POST"
                     onsubmit="return check()">
 
