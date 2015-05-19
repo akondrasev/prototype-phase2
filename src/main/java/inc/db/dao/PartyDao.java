@@ -1,6 +1,5 @@
 package inc.db.dao;
 
-import inc.Utils;
 import inc.db.model.Party;
 
 import java.util.List;
@@ -10,5 +9,9 @@ public interface PartyDao {
     Party getPartyById(Long partyId);
     List<Party> getOpenedParties();
 
-    void createEvent(Party party);
+    Long getPartiesCount();
+
+    void updateParty(Party party);
+
+    Long createDraftEvent();
 }

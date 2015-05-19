@@ -1,13 +1,12 @@
 package inc.db.model;
 
-import java.sql.Timestamp;
-
 public class Party {
     private Long partyId;
     private String partyName;
     private String partyOrganizerName;
     private Long partyOrganizerId;
     private String partyDate;
+    private Long partyChosenPresentId;
 
     private String partyAddress;
     private Long partyDefaultMoney;
@@ -66,5 +65,13 @@ public class Party {
 
     public void setPartyDate(String partyDate) {
         this.partyDate = partyDate;
+    }
+
+    public Long getPartyChosenPresentId() {
+        return partyChosenPresentId;
+    }
+
+    public void setPartyChosenPresentId(Long partyChosenPresentId) {
+        this.partyChosenPresentId = partyChosenPresentId;
     }
 }

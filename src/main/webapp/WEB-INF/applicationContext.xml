@@ -21,7 +21,7 @@
         <property name="presentDao" ref="presentDao"/>
     </bean>
 
-    <bean id="mostWantedPresentForParty" class="inc.webapp.action.ajax.MostWantedPresentForPartyAjaxAction" scope="prototype">
+    <bean id="mostWantedPresentForParty" class="inc.webapp.action.ajax.PresentInfoAjaxAction" scope="prototype">
         <property name="presentDao" ref="presentDao"/>
     </bean>
 
@@ -31,6 +31,9 @@
 
     <bean id="newsAjaxAction" class="inc.webapp.action.ajax.NewsAjaxAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
+    </bean>
+    <bean id="presentsForParty" class="inc.webapp.action.ajax.PresentsForPartyAjaxAction" scope="prototype">
+        <property name="presentDao" ref="presentDao"/>
     </bean>
 
     <bean id="partiesAction" class="inc.webapp.action.base.PartiesAction" scope="prototype">

@@ -1,10 +1,10 @@
-function presentModal(partyId){
+function presentModal(presentId){
 
     $.ajax({
-        url:"ajax/mostWantedPresentForParty.jsp",
+        url:"ajax/presentInfoAjax.jsp",
         type: "POST",
         dataType: 'json',
-        data: {"partyId":partyId},
+        data: {"presentId":presentId},
         success:function(response){
             console.log(response);
 
@@ -84,6 +84,18 @@ function addPresentModal(){
             success: function (response) {
                 $.notify(response, "success");
                 $("#close-btn", "#myModal").click();
+
+                $.ajax({
+                    url:"ajax/presentsForParty.jsp",
+                    data:{
+                        "partyId":$("#partyId").html()
+                    },
+                    type:"POST",
+                    dataType:"json",
+                    success:function(response){
+                        $.parsePresent(response);
+                    }
+                });
             }
         });
     }
@@ -92,7 +104,7 @@ function addPresentModal(){
 }
 
 function makeModal(title, content, defaultBtnFunction){
-    console.log("makeModal called")
+    console.log("makeModal called");
     var $primaryBtn = $(".modal .btn-primary");
     var $title = $(".modal .modal-title");
     var $content = $(".modal .modal-body");
@@ -107,6 +119,7 @@ function makeModal(title, content, defaultBtnFunction){
     } else {
         $primaryBtn.click(function(e){
             defaultBtnFunction.call();
+            $primaryBtn.unbind("click");
         });
     }
 

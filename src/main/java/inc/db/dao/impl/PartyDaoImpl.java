@@ -4,7 +4,6 @@ import inc.Utils;
 import inc.db.dao.PartyDao;
 import inc.db.model.Party;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +23,7 @@ public class PartyDaoImpl implements PartyDao {
         p1.setPartyName("Birthday");
         p1.setPartyOrganizerId(1L);
         p1.setPartyOrganizerName("Anton");
+        p1.setPartyChosenPresentId(1L);
 
         p1.setPartyDate(Utils.formatDate(new Date()));
 
@@ -35,6 +35,7 @@ public class PartyDaoImpl implements PartyDao {
         p2.setPartyName("Birthday");
         p2.setPartyOrganizerId(1L);
         p2.setPartyOrganizerName("Anton");
+        p2.setPartyChosenPresentId(2L);
 
         p2.setPartyDate(Utils.formatDate(new Date()));
 
@@ -58,7 +59,17 @@ public class PartyDaoImpl implements PartyDao {
     }
 
     @Override
-    public void createEvent(Party party) {
+    public Long getPartiesCount() {
+        return 10L;
+    }
 
+    @Override
+    public void updateParty(Party party) {
+
+    }
+
+    @Override
+    public Long createDraftEvent() {
+        return 11L;
     }
 }

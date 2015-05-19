@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<span id="partyId" class="hidden">${partyId}</span>
+
 <s:div class="container">
 
     <s:div class="row">
@@ -36,26 +38,16 @@
             </s:form>
         </s:div>
 
-        <s:div class="col-md-3 col-md-offset-1 col-xs-12">
+        <div class="col-md-3 col-md-offset-1 col-xs-12">
             <h1><s:text name="manage.presents"/></h1>
 
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <td id="1" class="btn btn-lg btn-info">
-                        Present #1
-                    </td>
-                    <td class="btn btn-danger">
-                        <i class="glyphicon glyphicon-remove-circle"></i>
-                    </td>
-                </tr>
-                </tbody>
+            <table class="table table-bordered" id="presents">
             </table>
 
             <button class="btn btn-default btn-lg btn-block" id="addPresent">
                 <i class="glyphicon glyphicon-plus"></i>
             </button>
-        </s:div>
+        </div>
     </s:div>
 </s:div>
 

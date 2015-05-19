@@ -13,6 +13,10 @@ public class EventAction extends BaseAction{
 
     private PartyDao partyDao;
 
+    private Long partyId;
+
+
+
     private String partyName;
     private String partyAddress;
     private Long partyDefaultMoney;
@@ -26,16 +30,18 @@ public class EventAction extends BaseAction{
             return LOGIN;
         }
 
+        partyId = partyDao.createDraftEvent();
+
+        if(session.get(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID) == null){
+            session.put(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID, partyId);
+        }
+
         setActionMessages((Collection<String>) session.get(XConstants.SESSION_ATTRIBUTE_KEY_MSG));
         session.remove(XConstants.SESSION_ATTRIBUTE_KEY_MSG);
         return SUCCESS;
     }
 
     public String process(){
-        if(logger.isDebugEnabled()){
-            logger.debug("process");
-        }
-
         if(user.getIsGuest()){
             return LOGIN;
         }
@@ -45,14 +51,20 @@ public class EventAction extends BaseAction{
                     partyName, partyAddress, partyDefaultMoney,partyDate, partyIsOpen));
         }
 
+        Long partyId = (Long) session.get(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID);
+        if(logger.isDebugEnabled()){
+            logger.debug(String.format("saving party '%s'", partyId));
+        }
+
         Party party = new Party();
+        party.setPartyId(partyId);
         party.setPartyAddress(partyAddress);
         party.setPartyDate(partyDate);
         party.setPartyDefaultMoney(partyDefaultMoney);
         party.setPartyName(partyName);
         party.setPartyOrganizerId(user.getUserId());
 
-        partyDao.createEvent(party);
+        partyDao.updateParty(party);
 
         addActionMessage("Party is successfully added");
 

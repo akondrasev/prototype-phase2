@@ -5,20 +5,20 @@ import inc.db.model.Present;
 import inc.webapp.action.AjaxBaseAction;
 import org.apache.log4j.Logger;
 
-public class MostWantedPresentForPartyAjaxAction extends AjaxBaseAction {
-    private static Logger logger = Logger.getLogger(MostWantedPresentForPartyAjaxAction.class);
+public class PresentInfoAjaxAction extends AjaxBaseAction {
+    private static Logger logger = Logger.getLogger(PresentInfoAjaxAction.class);
 
-    private Long partyId;
+    private Long presentId;
     private PresentDao presentDao;
 
     @Override
     protected void makeJson() {
 
         if(logger.isDebugEnabled()){
-            logger.debug(String.format("partyId = %s", partyId));
+            logger.debug(String.format("getting info for present '%s'", presentId));
         }
 
-        Present present = presentDao.getMostVotedPresentForParty(partyId);
+        Present present = presentDao.getPresent(presentId);
         jsonResult = gson.toJson(present);
     }
 
@@ -30,11 +30,11 @@ public class MostWantedPresentForPartyAjaxAction extends AjaxBaseAction {
         this.presentDao = presentDao;
     }
 
-    public Long getPartyId() {
-        return partyId;
+    public Long getPresentId() {
+        return presentId;
     }
 
-    public void setPartyId(Long partyId) {
-        this.partyId = partyId;
+    public void setPresentId(Long presentId) {
+        this.presentId = presentId;
     }
 }

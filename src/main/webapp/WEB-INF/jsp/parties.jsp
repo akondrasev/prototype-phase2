@@ -26,7 +26,7 @@
                     <tbody>
                         <s:iterator value="openParties">
                             <tr class="small">
-                                <td><a href="#" class="party-link" id="<s:property value="partyId"/>" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyName"/></a></td>
+                                <td><a href="#" class="party-link" id="<s:property value="partyChosenPresentId"/>" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyName"/></a></td>
                                 <td><s:property value="partyAddress"/></td>
                                 <td><s:property value="partyDate"/></td>
                                 <td><a href="#" class="user-link" id="<s:property value="partyOrganizerId"/>" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyOrganizerName"/></a></td>

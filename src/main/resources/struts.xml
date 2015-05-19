@@ -98,10 +98,11 @@
 
     <package name="ajax" extends="root" namespace="/ajax">
 
+        <action name="presentsForParty" class="presentsForParty"/>
         <action name="savePresent" class="presentSaveAjaxAction"/>
         <action name="userData" class="userDataAjaxAction"/>
         <action name="news" class="newsAjaxAction"/>
-        <action name="mostWantedPresentForParty" class="mostWantedPresentForParty"/>
+        <action name="presentInfoAjax" class="mostWantedPresentForParty"/>
     </package>
 
 </struts>
