@@ -36,7 +36,7 @@
 
     <script type="text/javascript">
         var applicationContext = "${pageContext.request.contextPath}";
-        var pictureBaseUrl = applicationContext + "/static/img/presents/";
+        var pictureBaseUrl ="";// applicationContext + "/static/img/presents/";
 
         var dateFormat = "DD.MM.YYYY HH:mm";
 
