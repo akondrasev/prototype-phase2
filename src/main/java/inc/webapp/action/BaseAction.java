@@ -34,19 +34,16 @@ public class BaseAction extends ActionSupport implements SessionAware, ServletRe
         return SUCCESS;
     }
 
-    public void reflectionTask(){
+    public void reflectionTask() throws IllegalAccessException {
 
-        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-        if(logger.isDebugEnabled()){
-            logger.debug(classLoader);
-        }
+        Class clazz = XConstants.class;
 
-
-        Field[] fields = XConstants.class.getDeclaredFields();
+        Field[] fields = clazz.getFields();
+        Field.setAccessible(fields, true);
 
         for(Field field : fields){
-            if(logger.isDebugEnabled()){
-                logger.debug(field);
+            if (logger.isDebugEnabled()) {
+//                logger.debug(String.format("%s = '%s'", field.getName(), field.get(null)));
             }
         }
 

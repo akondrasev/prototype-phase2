@@ -75,6 +75,15 @@ function check(){
             $input.addClass(errorClass);
             isOk = false;
         }
+
+        if($input.attr("type") == 'integer'){
+            var value = $input.val();
+            if(!$.isNumeric(value)){
+                $input.addClass(errorClass);
+                $input.val(value + " (Enter an integer)");
+                isOk = false;
+            }
+        }
     }
     return isOk;
 }

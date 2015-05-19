@@ -1,9 +1,12 @@
 package inc.webapp.action.base;
 
+import inc.XConstants;
 import inc.db.dao.PartyDao;
 import inc.db.model.Party;
 import inc.webapp.action.BaseAction;
 import org.apache.log4j.Logger;
+
+import java.util.Collection;
 
 public class EventAction extends BaseAction{
     private static Logger logger = Logger.getLogger(EventAction.class);
@@ -20,16 +23,26 @@ public class EventAction extends BaseAction{
     public String execute(){
 
         if(user.getIsGuest()){
-            return INPUT;
+            return LOGIN;
         }
 
+        setActionMessages((Collection<String>) session.get(XConstants.SESSION_ATTRIBUTE_KEY_MSG));
+        session.remove(XConstants.SESSION_ATTRIBUTE_KEY_MSG);
         return SUCCESS;
     }
 
     public String process(){
+        if(logger.isDebugEnabled()){
+            logger.debug("process");
+        }
 
         if(user.getIsGuest()){
-            return INPUT;
+            return LOGIN;
+        }
+
+        if(logger.isDebugEnabled()){
+            logger.debug(String.format("partyName = %s, partyAddress = %s, partyDefaultMoney = %s, partyDate = %s, partyIsOpen = %s",
+                    partyName, partyAddress, partyDefaultMoney,partyDate, partyIsOpen));
         }
 
         Party party = new Party();
@@ -40,6 +53,10 @@ public class EventAction extends BaseAction{
         party.setPartyOrganizerId(user.getUserId());
 
         partyDao.createEvent(party);
+
+        addActionMessage("Party is successfully added");
+
+        session.put(XConstants.SESSION_ATTRIBUTE_KEY_MSG, getActionMessages());
 
         return SUCCESS;
     }

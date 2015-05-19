@@ -18,13 +18,13 @@
         </s:div>
 
         <s:div class="col-md-4 col-md-offset-0 col-xs-12">
-            <s:form cssClass="form-login" action="processParty" namespace="/" method="POST" onsubmit="return check()">
+            <s:form cssClass="form-login" action="processParty" namespace="/" onsubmit="return check()">
 
                 <legend><h2><s:text name="create.party"/></h2></legend>
                 <s:textfield key="partyName" cssClass="form-control required"/>
                 <s:textfield key="partyAddress" cssClass="form-control required"/>
                 <s:textfield key="partyDate" cssClass="form-control required"/>
-                <s:textfield key="partyDefaultMoney" cssClass="form-control required"/>
+                <s:textfield key="partyDefaultMoney" cssClass="form-control required" type="integer"/>
                 <s:checkbox key="partyIsOpen"/>
 
                 <s:submit key="submit" class="btn btn-lg btn-primary btn-block"/>
