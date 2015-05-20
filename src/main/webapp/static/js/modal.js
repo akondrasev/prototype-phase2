@@ -6,17 +6,37 @@ function presentModal(presentId){
         dataType: 'json',
         data: {"presentId":presentId},
         success:function(response){
-            console.log(response);
+            var present = response;
+            var modalTitle = "Present " + present.presentName;
 
-            var modalTitle = "Present " + response.presentName;
-
-            var pictureUrl = pictureBaseUrl + response.pictureUrl;
+            var pictureUrl = pictureBaseUrl + present.pictureUrl;
 
             var modalContent = "";
             modalContent += "<img src='" + pictureUrl + "' class='thumbnail present-img'/>";
-            modalContent += " <h1><small>Cost: </small> $" + response.presentCost + "</h1>";
+            modalContent += "<h1><small>Cost: </small> $" + present.presentCost + "</h1>";
+            modalContent += "<button class='btn btn-success' id='vote'><span class='badge' id='votes'><b>0</b></span><br/> <i class='glyphicon glyphicon-heart'></i> Vote</button>";
 
             makeModal(modalTitle, modalContent);
+
+            var voteBtn = $(".btn#vote");
+
+            function redrawVotes(votes){
+                $("#votes b").html(votes);
+            }
+
+            voteBtn.click(function (e) {
+                $.ajax({
+                    url:"ajax/vote.jsp",
+                    type:"POST",
+                    data:{
+                        "presentId":present.presentId
+                    },
+                    success:function(msg){
+                        $.notify(msg, "success");
+                        getVotesForPresentAjax(present.presentId, redrawVotes)
+                    }
+                });
+            });
 
         }
     });

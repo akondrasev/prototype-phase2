@@ -51,4 +51,14 @@ public class PresentDaoImpl implements PresentDao {
     public void deletePresent(Long presentId) {
 
     }
+
+    @Override
+    public void voteForPresent(Long presentId) {
+
+    }
+
+    @Override
+    public Long getVotesForPresent(Long presentId) {
+        return 11L;
+    }
 }

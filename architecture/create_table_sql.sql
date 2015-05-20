@@ -45,6 +45,10 @@ CREATE TABLE comment (
   CONSTRAINT fk_comment_for_present FOREIGN KEY (COMMENT_FOR_PRESENT) REFERENCES present (PRESENT_ID)
 );
 
+CREATE TABLE vote (
+  present_id INT NOT NULL
+);
+
 CREATE TABLE news (
   news_id NUMERIC(10,0) NOT NULL DEFAULT nextval('news_id_seq'),
   user_email VARCHAR(50) NOT NULL,

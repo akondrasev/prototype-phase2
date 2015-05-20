@@ -13,4 +13,8 @@ public interface PresentDao {
     Present getPresent(Long presentId);
 
     void deletePresent(Long presentId);
+
+    void voteForPresent(Long presentId);
+
+    Long getVotesForPresent(Long presentId);
 }
