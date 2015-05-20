@@ -51,14 +51,6 @@
 
                     <s:if test="userParties.size > 0">
                         <table id="parties" class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th><i class="glyphicon glyphicon-list-alt"></i> Name</th>
-                                <th><i class="glyphicon glyphicon-pencil"></i> Address</th>
-                                <th><i class="glyphicon glyphicon-calendar"></i> Date</th>
-                                <th><i class="glyphicon glyphicon-remove-sign"></i> delete?</th>
-                            </tr>
-                            </thead>
                         </table>
                     </s:if>
                 </div>
