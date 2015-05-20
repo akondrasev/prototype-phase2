@@ -177,6 +177,6 @@ td.button-cell .btn{
     width: 180px;
 }
 
-.row {
+.row > [class^=col] > .row:not(:last-child) > [class^=col] {
     margin-bottom: 60px;
 }
