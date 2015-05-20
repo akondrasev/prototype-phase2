@@ -61,19 +61,19 @@ function addPresentModal(){
     modalContent += "<div class='form-group'>";
     modalContent += "<label for='presentName' class='control-label col-lg-4'>Name:</label>";
     modalContent += "<div class='col-lg-6'>";
-    modalContent += "<input type='text' name='presentName' id='presentName' class='form-control required'/>";
+    modalContent += "<input type='text' name='presentName' id='presentName' class='form-control required' placeholder='Present #1'/>";
     modalContent += "</div></div>";
 
     modalContent += "<div class='form-group'>";
     modalContent += "<label for='presentCost' class='control-label col-lg-4'>Cost:</label>";
     modalContent += "<div class='col-lg-6'>";
-    modalContent += "<input type='integer' name='presentCost' id='presentCost' class='form-control required'/>";
+    modalContent += "<input type='integer' name='presentCost' id='presentCost' class='form-control required' placeholder='$1000'/>";
     modalContent += "</div></div>";
 
     modalContent += "<div class='form-group'>";
     modalContent += "<label for='presentPictureUrl' class='control-label col-lg-4'>Picture Url:</label>";
     modalContent += "<div class='col-lg-6'>";
-    modalContent += "<input type='text' name='presentPictureUrl' id='presentPictureUrl' class='form-control'/>";
+    modalContent += "<input type='text' name='presentPictureUrl' id='presentPictureUrl' class='form-control' placeholder='ex.com/image.png'/>";
     modalContent += "</div></div>";
 
     modalContent += "</fieldset></form>";
