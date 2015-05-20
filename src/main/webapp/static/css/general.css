@@ -184,3 +184,6 @@ td.button-cell .btn{
 table[id^=parties] tbody{
     font-size: 0.8em;
 }
+table#presents , table#presents td,   table#presents tr{
+    border: none;
+}

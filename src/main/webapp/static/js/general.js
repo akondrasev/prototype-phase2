@@ -14,7 +14,6 @@ $(document).ready(function(){
         $("html").addClass("sticky");
     }
 
-    console.log("transperent navbar on scroll binded");
     $(window).scroll(function() {
         if ($(".navbar").offset().top > 75) {
             $navbarFixedTop.addClass("transperent");
@@ -27,7 +26,6 @@ $(document).ready(function(){
 
     $(function() {
         $('a.page-scroll').bind('click', function(event) {
-            console.log("scroll on click binded");
             var $anchor = $(this);
             $('html, body').stop().animate({
                 scrollTop: $($anchor.attr('href')).offset().top
