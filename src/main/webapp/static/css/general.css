@@ -176,3 +176,7 @@ td.button-cell .btn{
 #myModal input{
     width: 180px;
 }
+
+.row {
+    margin-bottom: 60px;
+}

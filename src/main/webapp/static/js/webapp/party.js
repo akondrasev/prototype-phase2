@@ -16,24 +16,6 @@ $(document).ready(function(){
         addPresentModal();
     });
 
-    $.loadPresentsForParty = function(partyId, onSuccess){
-        $.ajax({
-            url:"ajax/presentsForParty.jsp",
-            data:{
-                "partyId":partyId
-            },
-            type:"POST",
-            dataType:"json",
-            success:function(response){
-                $.parsePresent(response);
-                if(onSuccess != null){
-                    onSuccess.call();
-                }
-            }
-        });
-    }
-
-
     $.parsePresent = function (presentsJson){
         $("#presents").html("");
         if(presentsJson.length > 0){
@@ -57,18 +39,13 @@ $(document).ready(function(){
                     presentModal(presentId);
                 });
 
+                function onDeleteSuccess(msg){
+                    $.notify(msg);
+                    getPartyPresentsAjax(partyId, $.parsePresent);
+                }
+
                 removeBtn.click(function (e) {
-                    $.ajax({
-                        url:"ajax/deletePresent.jsp",
-                        type:"POST",
-                        data:{
-                            "presentId":presentId
-                        },
-                        success:function(response){
-                            $.notify(response);
-                            $.loadPresentsForParty(partyId);
-                        }
-                    });
+                    deletePresentAjax(presentId, onDeleteSuccess);
                 });
             }
         }

@@ -39,17 +39,16 @@ function presentModal(presentId){
 }
 
 function userModal(personId) {
-    $.ajax({
-       url:"ajax/userData.jsp",
-        type: "POST",
-        dataType: "json",
-        data: {"personId":personId},
-        success: function (response) {
-            var modalTitle = "User data";
-            var modalContent = "Name: " + response.userName;
-            makeModal(modalTitle, modalContent);
-        }
-    });
+
+    function drawUserModal(userJson){
+        var modalTitle = "User data";
+        var modalContent = "<h2><small>Name: </small>" + userJson.userName + "</h2>";
+        modalContent += "<h2><small>Email: </small>" + userJson.userEmail + "</h2>";
+        makeModal(modalTitle, modalContent);
+    }
+
+    getUserInfoAjax(personId, drawUserModal);
+
 }
 
 
@@ -86,22 +85,19 @@ function addPresentModal(){
             return false;
         }
 
-        $.ajax({
-            url:"ajax/savePresent.jsp",
-            data:{
-                "presentName":$("#presentName").val(),
-                "presentCost":$("#presentCost").val(),
-                "presentPictureUrl":$("#presentPictureUrl").val()
-            },
-            type:"POST",
-            success: function (response) {
-                $.notify(response, "success");
-                $("#close-btn", "#myModal").click();
+        var data = {
+            "presentName":$("#presentName").val(),
+            "presentCost":$("#presentCost").val(),
+            "presentPictureUrl":$("#presentPictureUrl").val()
+        };
 
-                $.loadPresentsForParty(partyId);
-                return true;
-            }
-        });
+        function afterPresentSavedSuccess(msg){
+            $.notify(msg, "success");
+            $("#close-btn", "#myModal").click();
+            getPartyPresentsAjax(partyId, $.parsePresent);
+        }
+
+        savePresentAjax(data, afterPresentSavedSuccess);
     }
 
     makeModal(modalTitle, modalContent, savePresent);
@@ -122,7 +118,7 @@ function makeModal(title, content, defaultBtnFunction){
         $primaryBtn.hide();
     } else {
         $primaryBtn.click(function(e){
-            var isOk = defaultBtnFunction.call();
+            var isOk = defaultBtnFunction();
             if(isOk){
                 $primaryBtn.unbind("click");
             }

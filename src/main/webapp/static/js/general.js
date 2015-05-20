@@ -56,6 +56,64 @@ function getNewsCounts() {
     });
 }
 
+function deletePresentAjax(presentId, onSuccess){
+    $.ajax({
+        url:"ajax/deletePresent.jsp",
+        type:"POST",
+        data:{
+            "presentId":presentId
+        },
+        success:function(response){
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+        }
+    });
+}
+
+function savePresentAjax(data, onSuccess){
+    $.ajax({
+        url:"ajax/savePresent.jsp",
+        data: data,
+        type:"POST",
+        success: function (response) {
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+        }
+    });
+}
+
+function getPartyPresentsAjax(partyId, onSuccess){
+    $.ajax({
+        url:"ajax/presentsForParty.jsp",
+        data:{
+            "partyId":partyId
+        },
+        type:"POST",
+        dataType:"json",
+        success:function(response){
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+        }
+    });
+}
+
+function getUserInfoAjax(personId, onSuccess){
+    $.ajax({
+        url:"ajax/userData.jsp",
+        type: "POST",
+        dataType: "json",
+        data: {"personId":personId},
+        success: function (response) {
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+        }
+    });
+}
+
 function voteForPresentAjax(presentId, onSuccess){
     $.ajax({
         url:"ajax/vote.jsp",
