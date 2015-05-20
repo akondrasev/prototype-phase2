@@ -29,6 +29,8 @@ function presentModal(presentId){
                 getVotesForPresentAjax(present.presentId, redrawVotes);
             }
 
+            getVotesForPresentAjax(present.presentId, redrawVotes);
+
             voteBtn.click(function (e) {
                 voteForPresentAjax(present.presentId, afterVoteSuccess);
             });

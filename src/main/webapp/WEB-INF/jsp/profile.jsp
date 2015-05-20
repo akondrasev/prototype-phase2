@@ -29,7 +29,7 @@
                             onsubmit="return check()">
 
                         <legend><h2><s:text name="edit.profile"/></h2></legend>
-                        <s:textfield key="userId" cssClass="form-control required" disabled="true"/>
+                        <s:hidden key="userId" cssClass="form-control required" disabled="true"/>
                         <s:textfield key="userEmail" cssClass="form-control required"/>
                         <s:password key="userPassword" cssClass="form-control required"/>
 
