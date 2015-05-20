@@ -24,18 +24,13 @@ function presentModal(presentId){
                 $("#votes b").html(votes);
             }
 
+            function afterVoteSuccess(msg){
+                $.notify(msg, "success");
+                getVotesForPresentAjax(present.presentId, redrawVotes);
+            }
+
             voteBtn.click(function (e) {
-                $.ajax({
-                    url:"ajax/vote.jsp",
-                    type:"POST",
-                    data:{
-                        "presentId":present.presentId
-                    },
-                    success:function(msg){
-                        $.notify(msg, "success");
-                        getVotesForPresentAjax(present.presentId, redrawVotes)
-                    }
-                });
+                voteForPresentAjax(present.presentId, afterVoteSuccess);
             });
 
         }

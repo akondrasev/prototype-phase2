@@ -56,6 +56,21 @@ function getNewsCounts() {
     });
 }
 
+function voteForPresentAjax(presentId, onSuccess){
+    $.ajax({
+        url:"ajax/vote.jsp",
+        type:"POST",
+        data:{
+            "presentId":presentId
+        },
+        success:function(response){
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+        }
+    });
+}
+
 function getVotesForPresentAjax(presentId, onSuccess){
     $.ajax({
         url:"ajax/getVotes.jsp",

@@ -12,32 +12,36 @@
 
 <div class="container">
 
-    <s:div class="row">
-        <s:div class="col-md-3 col-md-offset-0 col-xs-12">
-            <s:a action="index" namespace="/" class="btn btn-default btn-lg btn-block">
-                <i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>
-            </s:a>
-        </s:div>
-    </s:div>
-
     <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <s:div class="row">
+                <s:div class="col-lg-12">
+                    <s:a action="index" namespace="/" class="btn btn-default btn-lg btn-block">
+                        <i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>
+                    </s:a>
+                </s:div>
+            </s:div>
 
-        <div class="col-md-4 col-md-offset-4 col-xs-12">
-            <s:form cssClass="form-login" action="processEditProfile" namespace="/" method="POST"
-                    onsubmit="return check()">
+            <div class="row">
 
-                <legend><h2><s:text name="edit.profile"/></h2></legend>
-                <s:textfield key="userId" cssClass="form-control required" disabled="true"/>
-                <s:textfield key="userEmail" cssClass="form-control required"/>
-                <s:password key="userPassword" cssClass="form-control required"/>
+                <div class="col-lg-12">
+                    <s:form cssClass="form-login" action="processEditProfile" namespace="/" method="POST"
+                            onsubmit="return check()">
 
-                <s:textfield key="userName" cssClass="form-control required"/>
-                <s:textfield key="userBank" cssClass="form-control required"/>
+                        <legend><h2><s:text name="edit.profile"/></h2></legend>
+                        <s:textfield key="userId" cssClass="form-control required" disabled="true"/>
+                        <s:textfield key="userEmail" cssClass="form-control required"/>
+                        <s:password key="userPassword" cssClass="form-control required"/>
 
-                <s:submit key="submit" class="btn btn-lg btn-primary btn-block"/>
-                <s:actionerror cssClass="red"/>
-                <s:actionmessage cssClass="green"/>
-            </s:form>
+                        <s:textfield key="userName" cssClass="form-control required"/>
+                        <s:textfield key="userBank" cssClass="form-control required"/>
+
+                        <s:submit key="submit" class="btn btn-lg btn-primary btn-block"/>
+                        <s:actionerror cssClass="red"/>
+                        <s:actionmessage cssClass="green"/>
+                    </s:form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

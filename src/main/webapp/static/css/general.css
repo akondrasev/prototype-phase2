@@ -143,6 +143,10 @@ table[class^=form-], th, tr {
     border: 5px solid rgba(0,0,0,0);
 }
 
+table[class^=form-]{
+    width: 100%;
+}
+
 .error{
     border-color: #ee1521;
     background-color: #f8efc0;

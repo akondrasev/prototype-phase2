@@ -17,42 +17,48 @@
 
 <s:div class="container">
 
-    <s:div class="row">
-        <s:div class="col-md-3 col-md-offset-0 col-xs-12">
-            <s:a action="index" namespace="/" class="btn btn-default btn-lg btn-block">
-                <i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>
-            </s:a>
-        </s:div>
-    </s:div>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <s:div class="row">
+                <s:div class="col-lg-12">
+                    <s:a action="index" namespace="/" class="btn btn-default btn-lg btn-block">
+                        <i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>
+                    </s:a>
+                </s:div>
+            </s:div>
 
-    <s:div class="row">
-        <s:div class="col-md-4 col-md-offset-3 col-xs-12">
-            <s:form cssClass="form-login" action="processParty" namespace="/" onsubmit="return check()">
+            <s:div class="row">
+                <div class="col-lg-12">
+                    <h1><s:text name="manage.presents"/></h1>
 
-                <legend><h2><s:text name="create.party"/></h2></legend>
-                <s:textfield key="partyName" cssClass="form-control required"/>
-                <s:textfield key="partyAddress" cssClass="form-control required"/>
-                <s:textfield key="partyDate" cssClass="form-control required"/>
-                <s:textfield key="partyDefaultMoney" cssClass="form-control required" type="integer"/>
-                <s:checkbox key="partyIsOpen"/>
+                    <table class="table table-bordered" id="presents">
+                    </table>
 
-                <s:submit key="submit" class="btn btn-lg btn-primary btn-block"/>
-                <s:actionerror cssClass="red"/>
-                <s:actionmessage cssClass="green"/>
-            </s:form>
-        </s:div>
+                    <button class="btn btn-success btn-lg btn-block" id="addPresent">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </div>
+            </s:div>
 
-        <div class="col-md-3 col-md-offset-1 col-xs-12">
-            <h1><s:text name="manage.presents"/></h1>
+            <s:div class="row">
+                <s:div class="col-lg-12">
+                    <s:form cssClass="form-login" action="processParty" namespace="/" onsubmit="return check()">
 
-            <table class="table table-bordered" id="presents">
-            </table>
+                        <legend><h2><s:text name="create.party"/></h2></legend>
+                        <s:textfield key="partyName" cssClass="form-control required"/>
+                        <s:textfield key="partyAddress" cssClass="form-control required"/>
+                        <s:textfield key="partyDate" cssClass="form-control required"/>
+                        <s:textfield key="partyDefaultMoney" cssClass="form-control required" type="integer"/>
+                        <s:checkbox key="partyIsOpen"/>
 
-            <button class="btn btn-default btn-lg btn-block" id="addPresent">
-                <i class="glyphicon glyphicon-plus"></i>
-            </button>
+                        <s:submit key="submit" class="btn btn-lg btn-primary btn-block"/>
+                        <s:actionerror cssClass="red"/>
+                        <s:actionmessage cssClass="green"/>
+                    </s:form>
+                </s:div>
+            </s:div>
         </div>
-    </s:div>
+    </div>
 </s:div>
 
 </body>
