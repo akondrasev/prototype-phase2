@@ -14,4 +14,6 @@ public interface PartyDao {
     void updateParty(Party party);
 
     Long createDraftEvent();
+
+    List<Party> getUserParties(Long userId);
 }

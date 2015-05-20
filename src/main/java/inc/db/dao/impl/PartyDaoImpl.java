@@ -72,4 +72,9 @@ public class PartyDaoImpl implements PartyDao {
     public Long createDraftEvent() {
         return 11L;
     }
+
+    @Override
+    public List<Party> getUserParties(Long userId) {
+        return parties;
+    }
 }

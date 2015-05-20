@@ -8,6 +8,7 @@
 
     <bean id="homeAction" class="inc.webapp.action.base.HomeAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
+        <property name="partyDao" ref="partyDao"/>
     </bean>
     <bean id="profileAction" class="inc.webapp.action.base.ProfileAction" scope="prototype">
         <property name="userDao" ref="userDao"/>

@@ -39,7 +39,19 @@ $(document).ready(function(){
     if(userId != null && userId != "") {
         setInterval(getNewsCounts, 2000);
     }
+
+    $(".party-link").click(function(e){
+        presentModal($(this).attr("id"));
+    });
+
+    $(".user-link").click(function(e){
+        userModal($(this).attr("id"));
+    });
 });
+
+function getUserPartiesAjax(userId, onSuccess){
+    //TODO ajax call
+}
 
 function getNewsCounts() {
     $.ajax({

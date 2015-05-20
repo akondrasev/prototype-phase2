@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-lg-10 col-lg-offset-1">
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -23,7 +23,7 @@
                     </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id="parties">
                         <s:iterator value="openParties">
                             <tr class="small">
                                 <td><a href="#" class="party-link" id="<s:property value="partyChosenPresentId"/>" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyName"/></a></td>
