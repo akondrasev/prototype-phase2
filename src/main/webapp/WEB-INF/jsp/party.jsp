@@ -45,10 +45,10 @@
                     <s:form cssClass="form-login" action="processParty" namespace="/" onsubmit="return check()">
 
                         <legend><h2><s:text name="create.party"/></h2></legend>
-                        <s:textfield key="partyName" cssClass="form-control required"/>
-                        <s:textfield key="partyAddress" cssClass="form-control required"/>
+                        <s:textfield key="partyName" cssClass="form-control required" placeholder="Party #1"/>
+                        <s:textfield key="partyAddress" cssClass="form-control required" placeholder="Tallinn, Oismae tee 61 - 17"/>
                         <s:textfield key="partyDate" cssClass="form-control required"/>
-                        <s:textfield key="partyDefaultMoney" cssClass="form-control required" type="integer"/>
+                        <s:textfield key="partyDefaultMoney" cssClass="form-control required" type="integer" placeholder="$1000"/>
                         <s:checkbox key="partyIsOpen"/>
 
                         <s:submit key="submit" class="btn btn-lg btn-primary btn-block"/>
