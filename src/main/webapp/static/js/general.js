@@ -48,10 +48,26 @@ $(document).ready(function(){
     }
 
     var partiesTable = $('#parties');
+    var presentsTable = $('#presents');
 
-    partiesTable.dataTable( {
-        "ajax": "ajax/getUserParties.jsp",
-        "processing": true,
+    presentsTable.dataTable({
+        "ajax":{
+            url:"ajax/presentsForParty.jsp",
+            dataSrc:""
+        },
+        "serverSide": true,
+        "columns": [
+            { "data": "presentName", title:"<i class='glyphicon glyphicon-list-alt'></i> Name" },
+            { "data": "presentId", title:"<i class='glyphicon glyphicon-remove-sign'></i> Delete?"}
+        ]
+    });
+
+    partiesTable.dataTable({
+        "ajax":{
+            url:"ajax/getUserParties.jsp",
+            dataSrc:""
+        },
+        scrollX: "100%",
         "serverSide": true,
         "columns": [
             { "data": "partyName", title:"<i class='glyphicon glyphicon-list-alt'></i> Name", render:renderTablePartyLink },

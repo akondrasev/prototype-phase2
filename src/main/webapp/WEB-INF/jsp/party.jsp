@@ -13,8 +13,6 @@
 </head>
 <body>
 
-<span id="partyId" class="hidden">${partyId}</span>
-
 <s:div class="container">
 
     <div class="row">

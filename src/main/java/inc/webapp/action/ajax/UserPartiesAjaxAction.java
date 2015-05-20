@@ -26,10 +26,8 @@ public class UserPartiesAjaxAction extends AjaxBaseAction {
 
         Map<String, Object> response = new TreeMap<>();
         response.put("data", parties);
-        response.put("recordsFiltered", parties.size());
-        response.put("recordsTotal", parties.size());
 
-        jsonResult = gson.toJson(response);
+        jsonResult = gson.toJson(parties);
     }
 
     public PartyDao getPartyDao() {
