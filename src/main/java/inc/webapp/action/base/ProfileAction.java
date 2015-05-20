@@ -10,14 +10,23 @@ public class ProfileAction extends BaseAction {
     private UserDao userDao;
 
     public String execute(){
+
+        if(logger.isDebugEnabled()){
+            logger.debug(String.format("profile page for user '%s'", user.getUserId()));
+        }
+
         if(user.getIsGuest()){
             return INPUT;
         }
+
         return SUCCESS;
     }
 
     public String processEditProfile() throws Exception{
 
+        if(logger.isDebugEnabled()){
+            logger.debug(String.format("editing user profile '%s'", user.getUserId()));
+        }
         userDao.editUser(user);
 
         return SUCCESS;

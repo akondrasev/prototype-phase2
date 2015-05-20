@@ -18,6 +18,7 @@ public class PresentSaveAjaxAction extends AjaxBaseAction {
     @Override
     protected void makeJson() throws IOException {
         if(logger.isDebugEnabled()){
+            logger.debug(String.format("user '%s' creates present", user.getUserName()));
             logger.debug(String.format("presentName = '%s', presentCost = '%s', presentPictureUrl = '%s'"
                     ,presentName
                     ,presentCost

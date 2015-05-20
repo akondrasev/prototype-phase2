@@ -16,7 +16,7 @@ public class NewsAjaxAction extends AjaxBaseAction {
     protected void makeJson() {
 
         if(logger.isDebugEnabled()){
-//            logger.debug(String.format("personId = %s, auth user id = %s", personId, user.getUserId()));
+            logger.debug(String.format("user '%s' is getting info for user '%s'", user.getUserId(), personId));
         }
 
         /*

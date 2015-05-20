@@ -13,11 +13,11 @@ public class HomeAction extends BaseAction {
 
     public String execute(){
 
-        if(user.getIsGuest()){
-            if(logger.isDebugEnabled()){
-                logger.debug(String.format("user.userName = %s", user.getUserName()));
-            }
+        if(logger.isDebugEnabled()){
+            logger.debug(String.format("home page for user '%s'", user.getUserName()));
+        }
 
+        if(user.getIsGuest()){
             usersCount = userDao.getAllUsersCount();
 
             return SUCCESS;

@@ -31,6 +31,9 @@ public class EventAction extends BaseAction{
         }
 
         partyId = partyDao.createDraftEvent();
+        if(logger.isDebugEnabled()){
+            logger.debug(String.format("party page for user '%s', draft party '%s'", user.getUserName(), partyId));
+        }
 
         if(session.get(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID) == null){
             session.put(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID, partyId);
@@ -46,14 +49,12 @@ public class EventAction extends BaseAction{
             return LOGIN;
         }
 
-        if(logger.isDebugEnabled()){
-            logger.debug(String.format("partyName = %s, partyAddress = %s, partyDefaultMoney = %s, partyDate = %s, partyIsOpen = %s",
-                    partyName, partyAddress, partyDefaultMoney,partyDate, partyIsOpen));
-        }
-
         Long partyId = (Long) session.get(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID);
         if(logger.isDebugEnabled()){
-            logger.debug(String.format("saving party '%s'", partyId));
+            logger.debug(String.format("user '%s' creating party from draft '%s'", user.getUserName(), partyId));
+
+            logger.debug(String.format("partyName = %s, partyAddress = %s, partyDefaultMoney = %s, partyDate = %s, partyIsOpen = %s",
+                    partyName, partyAddress, partyDefaultMoney,partyDate, partyIsOpen));
         }
 
         Party party = new Party();

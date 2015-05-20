@@ -18,7 +18,7 @@ public class PresentsForPartyAjaxAction extends AjaxBaseAction {
     @Override
     protected void makeJson() throws IOException {
         if(logger.isDebugEnabled()){
-            logger.debug(String.format("Getting presents for party '%s'", partyId));
+            logger.debug(String.format("getting presents for party '%s'", partyId));
         }
 
         List<Present> presentList = presentDao.getPresentsForParty(partyId);

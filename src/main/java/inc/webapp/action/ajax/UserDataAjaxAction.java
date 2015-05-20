@@ -15,7 +15,7 @@ public class UserDataAjaxAction extends AjaxBaseAction {
     protected void makeJson() {
 
         if (logger.isDebugEnabled()) {
-            logger.debug(String.format("personId = %s", personId));
+            logger.debug(String.format("getting info for user '%s'", personId));
         }
 
         user = userDao.getUserById(personId);

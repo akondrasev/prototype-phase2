@@ -18,6 +18,10 @@ public class PartiesAction extends BaseAction {
 
     public String execute(){
 
+        if(logger.isDebugEnabled()){
+            logger.debug(String.format("open parties page for user '%s'", user.getUserName()));
+        }
+
         openParties = partyDao.getOpenedParties();
 
         return SUCCESS;

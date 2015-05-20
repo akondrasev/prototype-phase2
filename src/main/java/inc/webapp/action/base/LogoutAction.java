@@ -10,7 +10,7 @@ public class LogoutAction extends BaseAction{
     public String execute(){
 
         if(logger.isDebugEnabled()){
-            logger.debug(String.format("'%s' logout", user.getUserName()));
+            logger.debug(String.format("user's '%s' logout", user.getUserName()));
         }
 
         session.remove(XConstants.SESSION_ATTRIBUTE_KEY_USER);

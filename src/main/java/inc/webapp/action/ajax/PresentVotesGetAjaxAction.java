@@ -16,7 +16,6 @@ public class PresentVotesGetAjaxAction extends AjaxBaseAction{
     @Override
     protected void makeJson() throws IOException {
 
-
         Long votes = presentDao.getVotesForPresent(presentId);
 
         if(logger.isDebugEnabled()){

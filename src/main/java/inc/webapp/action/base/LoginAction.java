@@ -15,6 +15,15 @@ public class LoginAction extends BaseAction {
 
     @Override
     public String execute(){
+
+        if(logger.isDebugEnabled()){
+            logger.debug(String.format("login page for user '%s'", user.getUserName()));
+        }
+
+        if(!user.getIsGuest()){
+            return INPUT;
+        }
+
         setActionErrors((Collection<String>) session.get(XConstants.SESSION_ATTRIBUTE_KEY_ERROR));
 
         session.remove(XConstants.SESSION_ATTRIBUTE_KEY_ERROR);
@@ -31,7 +40,7 @@ public class LoginAction extends BaseAction {
         if(foundUser == null){
 
             if(logger.isDebugEnabled()){
-                logger.debug(String.format("user '%s' not found", email));
+                logger.debug(String.format("user with email '%s' not found", email));
             }
 
             addActionError(getText("user.not.found"));
