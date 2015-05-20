@@ -84,7 +84,7 @@ function addPresentModal(){
     function savePresent(){
 
         if(!check($("#myModal"))){
-            return false;
+            return;
         }
 
         var data = {
@@ -96,7 +96,10 @@ function addPresentModal(){
         function afterPresentSavedSuccess(msg){
             $.notify(msg, "success");
             $("#close-btn", "#myModal").click();
-            getPartyPresentsAjax(partyId, $.parsePresent);
+
+            if(global.presentsTable != null){
+                global.presentsTable.fnDraw();
+            }
         }
 
         savePresentAjax(data, afterPresentSavedSuccess);
@@ -106,7 +109,7 @@ function addPresentModal(){
 }
 
 function makeModal(title, content, defaultBtnFunction){
-    console.log("makeModal called");
+    console.log("makeModal() called");
     var $primaryBtn = $(".modal .btn-primary");
     var $title = $(".modal .modal-title");
     var $content = $(".modal .modal-body");
@@ -114,16 +117,15 @@ function makeModal(title, content, defaultBtnFunction){
     $content.html("");
     $title.html("");
 
+    $primaryBtn.unbind("click");
+
     $primaryBtn.show();
 
     if(defaultBtnFunction == null){
         $primaryBtn.hide();
     } else {
         $primaryBtn.click(function(e){
-            var isOk = defaultBtnFunction();
-            if(isOk){
-                $primaryBtn.unbind("click");
-            }
+            defaultBtnFunction();
         });
     }
 

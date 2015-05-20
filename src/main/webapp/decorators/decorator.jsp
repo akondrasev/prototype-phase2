@@ -46,6 +46,9 @@
         var dateFormat = "DD.MM.YYYY HH:mm";
 
         $.notify.defaults({globalPosition:"bottom right", elementPosition:"right", autoHideDelay:"5000"});
+
+
+        var global = {};
     </script>
 
     <decorator:head/>

@@ -7,7 +7,12 @@ $(document).ready(function(){
         "searching": false,
         "ordering": false,
         paging: false,
-        info:false
+        info:false,
+        ajax:{
+            dataSrc:"",
+            type: "POST"
+        },
+        serverSide: true
     } );
 
     var partiesTable = $('#parties');
@@ -20,12 +25,10 @@ $(document).ready(function(){
         presentsTable.dataTable({
             "ajax":{
                 url:"ajax/presentsForParty.jsp",
-                dataSrc:"",
                 "data": function ( data ) {
                     data.partyId = partyId;
                 }
             },
-            "serverSide": true,
             "columns": [
                 { "data": "presentName", className:"btn btn-info present-link", render:renderTablePresentLink},
                 { "data": "presentId", className:"btn btn-danger remove-present-link", render:renderTablePresentRemoveLink}
@@ -54,6 +57,7 @@ $(document).ready(function(){
                 presentModal($(this).attr("id"));
             });
         });
+        global.presentsTable = presentsTable;
     }
 
 
@@ -63,11 +67,9 @@ $(document).ready(function(){
     if(partiesTable != null){
         partiesTable.dataTable({
             "ajax":{
-                url:"ajax/getUserParties.jsp",
-                dataSrc:""
+                url:"ajax/getUserParties.jsp"
             },
             scrollX: "100%",
-            "serverSide": true,
             "columns": [
                 { "data": "partyName", title:"<i class='glyphicon glyphicon-list-alt'></i> Name", render:renderTablePartyLink },
                 { "data": "partyAddress", title:"<i class='glyphicon glyphicon-pencil'></i> Address" },
@@ -99,6 +101,8 @@ $(document).ready(function(){
                 userModal($(this).attr("id"));
             });
         });
+
+        global.partiesTable = partiesTable;
     }
 
 });
