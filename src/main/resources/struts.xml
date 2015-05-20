@@ -99,6 +99,7 @@
     <package name="ajax" extends="root" namespace="/ajax">
 
         <action name="presentsForParty" class="presentsForParty"/>
+        <action name="deletePresent" class="deletePresent"/>
         <action name="savePresent" class="presentSaveAjaxAction"/>
         <action name="userData" class="userDataAjaxAction"/>
         <action name="news" class="newsAjaxAction"/>

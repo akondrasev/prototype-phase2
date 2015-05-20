@@ -35,6 +35,9 @@
     <bean id="presentsForParty" class="inc.webapp.action.ajax.PresentsForPartyAjaxAction" scope="prototype">
         <property name="presentDao" ref="presentDao"/>
     </bean>
+    <bean id="deletePresent" class="inc.webapp.action.ajax.PresentDeleteAjaxAction" scope="prototype">
+        <property name="presentDao" ref="presentDao"/>
+    </bean>
 
     <bean id="partiesAction" class="inc.webapp.action.base.PartiesAction" scope="prototype">
         <property name="userDao" ref="userDao"/>

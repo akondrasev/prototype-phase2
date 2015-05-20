@@ -8,15 +8,13 @@ function presentModal(presentId){
         success:function(response){
             console.log(response);
 
-            var modalTitle = "Current present";
+            var modalTitle = "Present " + response.presentName;
 
             var pictureUrl = pictureBaseUrl + response.pictureUrl;
-            console.log(pictureUrl);
 
             var modalContent = "";
-            //modalContent += "<div class'row'><div class='col-xs-6 col-md-3'>";
             modalContent += "<img src='" + pictureUrl + "' class='thumbnail present-img'/>";
-            //modalContent += "</div></div>";
+            modalContent += " <h1><small>Cost: </small> $" + response.presentCost + "</h1>";
 
             makeModal(modalTitle, modalContent);
 
@@ -70,7 +68,7 @@ function addPresentModal(){
     function savePresent(){
 
         if(!check($("#myModal"))){
-            return;
+            return false;
         }
 
         $.ajax({
@@ -85,17 +83,8 @@ function addPresentModal(){
                 $.notify(response, "success");
                 $("#close-btn", "#myModal").click();
 
-                $.ajax({
-                    url:"ajax/presentsForParty.jsp",
-                    data:{
-                        "partyId":$("#partyId").html()
-                    },
-                    type:"POST",
-                    dataType:"json",
-                    success:function(response){
-                        $.parsePresent(response);
-                    }
-                });
+                $.loadPresentsForParty(partyId);
+                return true;
             }
         });
     }
@@ -118,8 +107,10 @@ function makeModal(title, content, defaultBtnFunction){
         $primaryBtn.hide();
     } else {
         $primaryBtn.click(function(e){
-            defaultBtnFunction.call();
-            $primaryBtn.unbind("click");
+            var isOk = defaultBtnFunction.call();
+            if(isOk){
+                $primaryBtn.unbind("click");
+            }
         });
     }
 

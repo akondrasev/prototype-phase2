@@ -11,4 +11,6 @@ public interface PresentDao {
     void savePresent(String presentName, Long presentCost, String presentPictureUrl);
 
     Present getPresent(Long presentId);
+
+    void deletePresent(Long presentId);
 }

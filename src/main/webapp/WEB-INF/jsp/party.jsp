@@ -6,6 +6,10 @@
     <title>Party</title>
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/webapp/party.js"></script>
+
+    <script type="text/javascript">
+        var partyId = ${partyId};
+    </script>
 </head>
 <body>
 

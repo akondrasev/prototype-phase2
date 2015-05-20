@@ -46,4 +46,9 @@ public class PresentDaoImpl implements PresentDao {
     public Present getPresent(Long presentId) {
         return present;
     }
+
+    @Override
+    public void deletePresent(Long presentId) {
+
+    }
 }
