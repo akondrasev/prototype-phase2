@@ -49,8 +49,8 @@
                         <small>you have not activities</small>
                     </s:if>
 
-                    <div class="table-responsive">
-                        <table class="table table-hover">
+                    <s:if test="userParties.size > 0">
+                        <table id="parties" class="table table-hover">
                             <thead>
                             <tr>
                                 <th><i class="glyphicon glyphicon-list-alt"></i> Name</th>
@@ -59,22 +59,13 @@
                                 <th><i class="glyphicon glyphicon-remove-sign"></i> delete?</th>
                             </tr>
                             </thead>
-
-                            <tbody id="parties">
-                            <s:iterator value="userParties">
-                                <tr class="small">
-                                    <td><a href="#" class="party-link" id="<s:property value="partyChosenPresentId"/>" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i> <s:property value="partyName"/></a></td>
-                                    <td><s:property value="partyAddress"/></td>
-                                    <td><s:property value="partyDate"/></td>
-                                    <td><a href="#" class="participate-link" id="<s:property value="partyId"/>" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-remove"></i> remove</a></td>
-                                </tr>
-                            </s:iterator>
-                            </tbody>
                         </table>
-                    </div>
+                    </s:if>
                 </div>
             </div>
+
         </div>
+
     </div>
 </div>
 

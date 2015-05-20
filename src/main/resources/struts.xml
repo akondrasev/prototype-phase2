@@ -102,6 +102,7 @@
 
     <package name="ajax" extends="root" namespace="/ajax">
 
+        <action name="getUserParties" class="userPartiesAjaxAction"/>
         <action name="getVotes" class="votesForPresentAjaxAction"/>
         <action name="vote" class="voteForPresentAjaxAction"/>
         <action name="presentsForParty" class="presentsForPartyAjaxAction"/>
