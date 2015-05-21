@@ -19,6 +19,13 @@
         <property name="userDao" ref="userDao"/>
     </bean>
 
+    <bean id="allUsersAjaxAction" class="inc.webapp.action.ajax.AllUsersAjaxAction" scope="prototype">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+    <bean id="guestsForPartyAjaxAction" class="inc.webapp.action.ajax.GuestsForPartyAjaxAction" scope="prototype">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
     <bean id="eventAction" class="inc.webapp.action.base.EventAction" scope="prototype">
         <property name="partyDao" ref="partyDao"/>
     </bean>

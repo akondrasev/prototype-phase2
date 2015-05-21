@@ -40,6 +40,13 @@ function presentModal(presentId){
 
 }
 
+function addGuestsModal(){
+    var modalTitle = "Choose Guests";
+    var modalContent = "users";
+
+    makeModal(modalTitle, modalContent);
+}
+
 function userModal(personId) {
 
     function drawUserModal(userJson){

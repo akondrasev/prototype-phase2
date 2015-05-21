@@ -18,4 +18,7 @@ public interface UserDao {
     NewsCounts getNewsCountForUser(Long userId);
 
     void addUser(String userName, String userPassword, String email, String userBank);
+
+    List<User> getAllUsers();
+    List<User> getGuestsForParty(Long partyId);
 }

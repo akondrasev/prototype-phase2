@@ -39,13 +39,26 @@
             </s:div>
 
             <s:div class="row">
+                <div class="col-lg-12">
+                    <h1><s:text name="manage.guests"/></h1>
+
+                    <table class="table table-bordered" id="guests">
+                    </table>
+
+                    <button class="btn btn-success btn-lg btn-block" id="addGuest">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </div>
+            </s:div>
+
+            <s:div class="row">
                 <s:div class="col-lg-12">
                     <s:form cssClass="form-login" action="processParty" namespace="/" onsubmit="return check()">
 
                         <legend><h2><s:text name="create.party"/></h2></legend>
                         <s:textfield key="partyName" cssClass="form-control required" placeholder="Party #1"/>
                         <s:textfield key="partyAddress" cssClass="form-control required" placeholder="Tallinn, Oismae tee 61 - 17"/>
-                        <s:textfield key="partyDate" cssClass="form-control required"/>
+                        <s:textfield key="partyDate" cssClass="form-control required" type="date"/>
                         <s:textfield key="partyDefaultMoney" cssClass="form-control required" type="integer" placeholder="$1000"/>
                         <s:checkbox key="partyIsOpen"/>
 

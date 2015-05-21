@@ -17,6 +17,28 @@ $(document).ready(function(){
 
     var partiesTable = $('#parties');
     var presentsTable = $('#presents');
+    var guests = $("#guests");
+
+
+    /*
+     guests
+     */
+    if(guests != null){
+        guests.dataTable({
+            "ajax":{
+                url:"ajax/getGuests.jsp",
+                "data": function ( data ) {
+                    data.partyId = partyId;
+                }
+            },
+            "columns": [
+                { "data": "userName", className:"btn btn-info user-link table-btn", render:renderTableUserLink},
+                { "data": "userId", className:"btn btn-danger remove-user-link", render:renderTableUserRemoveLink}
+            ]
+        });
+        $("thead", guests).hide();
+    }
+
 
     /*
     present table
@@ -30,7 +52,7 @@ $(document).ready(function(){
                 }
             },
             "columns": [
-                { "data": "presentName", className:"btn btn-info present-link", render:renderTablePresentLink},
+                { "data": "presentName", className:"btn btn-info present-link table-btn", render:renderTablePresentLink},
                 { "data": "presentId", className:"btn btn-danger remove-present-link", render:renderTablePresentRemoveLink}
             ]
         });
@@ -107,6 +129,12 @@ $(document).ready(function(){
 
 });
 
+function renderTableUserRemoveLink(data, type, row){
+    return "<i id='"+ row.userId + "' class='glyphicon glyphicon-remove'></i>";
+}
+function renderTableUserLink(data, type, row){
+    return "<small><i class='glyphicon glyphicon-user'></i></small>" + row.userName;;
+}
 
 function renderTablePresentRemoveLink(data, type, row){
     return "<i id='"+ row.presentId + "' class='glyphicon glyphicon-remove'></i>";

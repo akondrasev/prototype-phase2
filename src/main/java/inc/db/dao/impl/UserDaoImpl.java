@@ -6,10 +6,33 @@ import inc.db.model.User;
 import org.apache.log4j.Logger;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao{
     private static Logger logger = Logger.getLogger(UserDaoImpl.class);
+
+    private static List<User> users;
+
+    static {
+        users = new ArrayList<>();
+        User user = new User();
+        user.setUserId(2L);
+        user.setUserName("Julian");
+        user.setIsGuest(false);
+        user.setUserBank("1215464789795132");
+        user.setUserEmail("jul@mail.ru");
+
+        User u2 = new User();
+        u2.setUserId(1L);
+        u2.setUserName("Ksusa");
+        u2.setIsGuest(false);
+        u2.setUserBank("1215464789795132");
+        u2.setUserEmail("ksu@mail.ru");
+
+
+        users.add(user);users.add(u2);
+    }
 
     @Override
     public Long getAllUsersCount() {
@@ -107,5 +130,15 @@ public class UserDaoImpl implements UserDao{
             logger.debug(String.format("email = %s", email));
             logger.debug(String.format("userBank = %s", userBank));
         }
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return users;
+    }
+
+    @Override
+    public List<User> getGuestsForParty(Long partyId) {
+        return users;
     }
 }
