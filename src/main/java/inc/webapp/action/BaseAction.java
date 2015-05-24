@@ -29,6 +29,8 @@ public class BaseAction extends ActionSupport implements SessionAware, ServletRe
 
     protected Gson gson = new Gson();
 
+    protected Boolean readonly = false;
+
 
     public String execute() throws Exception {
         return SUCCESS;
@@ -84,5 +86,13 @@ public class BaseAction extends ActionSupport implements SessionAware, ServletRe
 
     public void setSubmit(String submit) {
         this.submit = submit;
+    }
+
+    public Boolean getReadonly() {
+        return readonly;
+    }
+
+    public void setReadonly(Boolean readonly) {
+        this.readonly = readonly;
     }
 }

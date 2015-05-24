@@ -126,26 +126,28 @@ $(document).ready(function(){
 
         partiesTable.on("draw.dt", function(){
             var removePartyLink = $(".remove-party-link",partiesTable);
-            var presentLink = $(".present-link",partiesTable);
+            var partyLink = $(".party-link",partiesTable);
             var userLink = $(".user-link",partiesTable);
 
-            makeButtonForModal(presentLink);
             makeButtonForModal(userLink);
 
             removePartyLink.click(function(e){
-                //TODO ajax method
-                console.log("remove action");
+                var id = $(this).attr("id");
+
+                function onSuccess(msg){
+                    $.notify(msg);
+                    partiesTable.fnDraw();
+                }
+
+                removePartyAjax(id, onSuccess);
             });
 
-            presentLink.click(function(e){
-                e.preventDefault();
-                presentModal($(this).attr("id"));
-            });
-
-            userLink.click(function(e){
-                e.preventDefault();
-                userModal($(this).attr("id"));
-            });
+            if(userLink != null){
+                userLink.click(function(e){
+                    e.preventDefault();
+                    userModal($(this).attr("id"));
+                });
+            }
         });
 
         global.partiesTable = partiesTable;
@@ -169,8 +171,8 @@ function renderTablePresentLink(data, type, row){
 }
 
 function renderTableRemoveLink(data, type, row){
-    return "<a href='#' id=" + data + " class='remove-party-link'><i class='glyphicon glyphicon-remove'></i> remove</a>";
+    return "<a id=" + data + " class='remove-party-link'><i class='glyphicon glyphicon-remove'></i> remove</a>";
 }
 function renderTablePartyLink(data, type, row){
-    return "<a href='#' id=" + row.partyId + " class='present-link'><i class='glyphicon glyphicon-eye-open'></i> "+data+"</a>";
+    return "<a href='party.jsp?id=" + row.partyId + "' id=" + row.partyId + " class='party-link'><i class='glyphicon glyphicon-eye-open'></i> "+data+"</a>";
 }

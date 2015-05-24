@@ -14,6 +14,9 @@
     <bean id="userPartiesAjaxAction" class="inc.webapp.action.ajax.UserPartiesAjaxAction" scope="prototype">
         <property name="partyDao" ref="partyDao"/>
     </bean>
+    <bean id="partyRemoveAjaxAction" class="inc.webapp.action.ajax.PartyRemoveAjaxAction" scope="prototype">
+        <property name="partyDao" ref="partyDao"/>
+    </bean>
 
     <bean id="profileAction" class="inc.webapp.action.base.ProfileAction" scope="prototype">
         <property name="userDao" ref="userDao"/>

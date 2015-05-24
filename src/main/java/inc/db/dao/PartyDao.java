@@ -16,4 +16,6 @@ public interface PartyDao {
     Long createDraftEvent();
 
     List<Party> getUserParties(Long userId);
+
+    void removeParty(Long partyId);
 }

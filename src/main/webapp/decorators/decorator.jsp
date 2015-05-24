@@ -41,6 +41,7 @@
 
     <script type="text/javascript">
         var applicationContext = "${pageContext.request.contextPath}";
+        var readonly = ${readonly};
         var pictureBaseUrl ="";// applicationContext + "/static/img/presents/";
 
         var dateFormat = "DD.MM.YYYY HH:mm";

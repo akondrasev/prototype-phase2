@@ -1,8 +1,11 @@
 package inc.webapp.action.base;
 
+import inc.XConstants;
 import inc.db.dao.UserDao;
 import inc.webapp.action.BaseAction;
 import org.apache.log4j.Logger;
+
+import java.util.List;
 
 public class ProfileAction extends BaseAction {
     private static Logger logger = Logger.getLogger(ProfileAction.class);
@@ -19,6 +22,13 @@ public class ProfileAction extends BaseAction {
             return INPUT;
         }
 
+        List<String> msgs = (List<String>) session.get(XConstants.SESSION_ATTRIBUTE_KEY_MSG);
+
+        if(msgs != null){
+            setActionMessages(msgs);
+        }
+        session.remove(XConstants.SESSION_ATTRIBUTE_KEY_MSG);
+
         return SUCCESS;
     }
 
@@ -28,6 +38,9 @@ public class ProfileAction extends BaseAction {
             logger.debug(String.format("editing user profile '%s'", user.getUserId()));
         }
         userDao.editUser(user);
+
+        addActionMessage("Profile edited successfully");
+        session.put(XConstants.SESSION_ATTRIBUTE_KEY_MSG, getActionMessages());
 
         return SUCCESS;
     }

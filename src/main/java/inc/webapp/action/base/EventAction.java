@@ -14,8 +14,7 @@ public class EventAction extends BaseAction{
     private PartyDao partyDao;
 
     private Long partyId;
-
-
+    private Long id;
 
     private String partyName;
     private String partyAddress;
@@ -30,9 +29,25 @@ public class EventAction extends BaseAction{
             return LOGIN;
         }
 
-        partyId = partyDao.createDraftEvent();
-        if(logger.isDebugEnabled()){
-            logger.debug(String.format("party page for user '%s', draft party '%s'", user.getUserName(), partyId));
+        if(id == null){
+            partyId = partyDao.createDraftEvent();
+
+            if(logger.isDebugEnabled()){
+                logger.debug(String.format("party page for user '%s', draft party '%s'", user.getUserName(), partyId));
+            }
+        } else {
+            partyId = id;
+
+            if(logger.isDebugEnabled()){
+                logger.debug(String.format("party page for user '%s', got party '%s'", user.getUserName(), partyId));
+            }
+
+            Party party = partyDao.getPartyById(partyId);
+            partyName = party.getPartyName();
+            partyAddress = party.getPartyAddress();
+            partyDefaultMoney = party.getPartyDefaultMoney();
+            partyDate = party.getPartyDate();
+            readonly = true;
         }
 
         if(session.get(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID) == null){
@@ -120,5 +135,13 @@ public class EventAction extends BaseAction{
 
     public void setPartyIsOpen(Boolean partyIsOpen) {
         this.partyIsOpen = partyIsOpen;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

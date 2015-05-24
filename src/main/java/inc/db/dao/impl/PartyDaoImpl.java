@@ -77,4 +77,9 @@ public class PartyDaoImpl implements PartyDao {
     public List<Party> getUserParties(Long userId) {
         return parties;
     }
+
+    @Override
+    public void removeParty(Long partyId) {
+
+    }
 }

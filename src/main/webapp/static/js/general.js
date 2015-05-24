@@ -8,6 +8,10 @@ $(document).ready(function(){
     var $navbarFixedTop = $(".navbar-fixed-top");
     var $intro = $(".intro");
 
+    if(readonly){
+        $("input").attr("disabled", "disabled");
+    }
+
     userId = $("#user-id-span").html();
 
     if($intro.length == 0){
@@ -47,8 +51,17 @@ $(document).ready(function(){
     });
 });
 
-function getUserPartiesAjax(userId, onSuccess){
-    //TODO ajax call
+function removePartyAjax(partyId, onSuccess){
+    $.ajax({
+        url: "ajax/removeParty.jsp",
+        type: "POST",
+        data: {"partyId": partyId},
+        success: function (response) {
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+        }
+    });
 }
 
 function getNewsCounts() {

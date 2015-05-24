@@ -12,6 +12,9 @@ html.sticky footer{
     position: absolute;
     bottom: 0;
 }
+a {
+    cursor: pointer;
+}
 
 
 
@@ -199,11 +202,11 @@ table#presents td:not(:first-child), table#guests td:not(:first-child){
 }
 #start{
     padding-left: 15px;
-    padding-top: 65px;
+    padding-top: 15px;
     padding-right: 15px;
     position: fixed;
     left: 0px;
-    top: 0px;
+    top: 50px;
     height: 100%;
     background-color: rgba(150,150,150,0.05);
 }
