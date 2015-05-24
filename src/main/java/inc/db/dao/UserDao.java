@@ -21,4 +21,6 @@ public interface UserDao {
 
     List<User> getAllUsers();
     List<User> getGuestsForParty(Long partyId);
+
+    void removeGuestFromParty(Long personId, Long partyId);
 }

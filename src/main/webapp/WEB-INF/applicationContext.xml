@@ -18,6 +18,9 @@
     <bean id="profileAction" class="inc.webapp.action.base.ProfileAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
     </bean>
+    <bean id="deleteGuestAjaxAction" class="inc.webapp.action.ajax.GuestRemoveAjaxAction" scope="prototype">
+        <property name="userDao" ref="userDao"/>
+    </bean>
 
     <bean id="allUsersAjaxAction" class="inc.webapp.action.ajax.AllUsersAjaxAction" scope="prototype">
         <property name="userDao" ref="userDao"/>

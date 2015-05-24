@@ -10,15 +10,20 @@
 
 <body>
 
+
+<s:a action="index" namespace="/" id="start">
+    <i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>
+</s:a>
+
 <div class="container">
 
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
             <s:div class="row">
                 <s:div class="col-lg-12">
-                    <s:a action="index" namespace="/" class="btn btn-default btn-lg btn-block">
-                        <i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>
-                    </s:a>
+                    <%--<s:a action="index" namespace="/" class="btn btn-default btn-lg btn-block">--%>
+                        <%--<i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>--%>
+                    <%--</s:a>--%>
                 </s:div>
             </s:div>
 

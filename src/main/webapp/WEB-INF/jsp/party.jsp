@@ -13,24 +13,30 @@
 </head>
 <body>
 
+<s:a action="index" namespace="/" id="start">
+    <i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>
+</s:a>
+
 <s:div class="container">
 
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
             <s:div class="row">
-                <s:div class="col-lg-12">
-                    <s:a action="index" namespace="/" class="btn btn-default btn-lg btn-block">
-                        <i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>
-                    </s:a>
-                </s:div>
+                <%--<s:div class="col-lg-12">--%>
+                    <%--<s:a action="index" namespace="/" class="btn btn-default btn-lg btn-block">--%>
+                        <%--<i class="glyphicon glyphicon-arrow-left"></i> <s:text name="back.to.welcome"/>--%>
+                    <%--</s:a>--%>
+                <%--</s:div>--%>
             </s:div>
 
             <s:div class="row">
                 <div class="col-lg-12">
                     <h1><s:text name="manage.presents"/></h1>
 
-                    <table class="table table-bordered" id="presents">
-                    </table>
+                    <div class="text-center">
+                        <table class="table table-bordered" id="presents">
+                        </table>
+                    </div>
 
                     <button class="btn btn-success btn-lg btn-block" id="addPresent">
                         <i class="glyphicon glyphicon-plus"></i>
@@ -42,8 +48,10 @@
                 <div class="col-lg-12">
                     <h1><s:text name="manage.guests"/></h1>
 
-                    <table class="table table-bordered" id="guests">
-                    </table>
+                    <div class="text-center">
+                        <table class="table table-bordered" id="guests">
+                        </table>
+                    </div>
 
                     <button class="btn btn-success btn-lg btn-block" id="addGuest">
                         <i class="glyphicon glyphicon-plus"></i>

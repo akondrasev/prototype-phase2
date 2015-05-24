@@ -141,4 +141,9 @@ public class UserDaoImpl implements UserDao{
     public List<User> getGuestsForParty(Long partyId) {
         return users;
     }
+
+    @Override
+    public void removeGuestFromParty(Long personId, Long partyId) {
+
+    }
 }

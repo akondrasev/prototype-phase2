@@ -110,6 +110,22 @@ function getPartyPresentsAjax(partyId, onSuccess){
     });
 }
 
+function deleteGuestFromPartyAjax(personId, onSuccess){
+    $.ajax({
+        url:"ajax/removeGuest.jsp",
+        type: "POST",
+        data: {
+            "personId":personId,
+            "partyId" : partyId
+        },
+        success: function (response) {
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+        }
+    });
+}
+
 function getUserInfoAjax(personId, onSuccess){
     $.ajax({
         url:"ajax/userData.jsp",

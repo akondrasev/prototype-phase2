@@ -17,14 +17,14 @@ $(document).ready(function(){
 
     var partiesTable = $('#parties');
     var presentsTable = $('#presents');
-    var guests = $("#guests");
+    var guestsTable = $("#guests");
 
 
     /*
      guests
      */
-    if(guests != null){
-        guests.dataTable({
+    if(guestsTable != null){
+        guestsTable.dataTable({
             "ajax":{
                 url:"ajax/getGuests.jsp",
                 "data": function ( data ) {
@@ -36,7 +36,31 @@ $(document).ready(function(){
                 { "data": "userId", className:"btn btn-danger remove-user-link", render:renderTableUserRemoveLink}
             ]
         });
-        $("thead", guests).hide();
+        $("thead", guestsTable).hide();
+
+        guestsTable.on("draw.dt", function(){
+            var removeUserLink = $(".remove-user-link",guestsTable);
+            var userLink = $(".user-link" ,guestsTable);
+
+            makeButtonForModal(userLink);
+
+            removeUserLink.click(function(e){
+                e.preventDefault();
+
+                function onRemoveSuccess(msg){
+                    $.notify(msg);
+                    guestsTable.fnDraw();
+                }
+                deleteGuestFromPartyAjax($("i", $(this)).attr("id"), onRemoveSuccess);
+            });
+
+            userLink.click(function(e){
+                e.preventDefault();
+                userModal($("i", this).attr("id"));
+            });
+        });
+
+        global.guestsTable = guestsTable;
     }
 
 
@@ -60,7 +84,7 @@ $(document).ready(function(){
 
         presentsTable.on("draw.dt", function(){
             var removePresentLink = $(".remove-present-link",presentsTable);
-            var presentLink = $(".present-link",presentsTable);
+            var presentLink = $(".present-link", presentsTable);
 
             makeButtonForModal(presentLink);
 
@@ -76,7 +100,7 @@ $(document).ready(function(){
 
             presentLink.click(function(e){
                 e.preventDefault();
-                presentModal($(this).attr("id"));
+                presentModal($("i", this).attr("id"));
             });
         });
         global.presentsTable = presentsTable;
@@ -133,7 +157,7 @@ function renderTableUserRemoveLink(data, type, row){
     return "<i id='"+ row.userId + "' class='glyphicon glyphicon-remove'></i>";
 }
 function renderTableUserLink(data, type, row){
-    return "<small><i class='glyphicon glyphicon-user'></i></small>" + row.userName;;
+    return "<small><i id='"+row.userId+"' class='glyphicon glyphicon-user'></i></small>" + row.userName;
 }
 
 function renderTablePresentRemoveLink(data, type, row){
@@ -141,7 +165,7 @@ function renderTablePresentRemoveLink(data, type, row){
 }
 
 function renderTablePresentLink(data, type, row){
-    return "<small><i class='glyphicon glyphicon-eur'></i></small>" + row.presentCost + " - " + row.presentName;
+    return "<small><i id='"+ row.presentId +"' class='glyphicon glyphicon-eur'></i></small>" + row.presentCost + " - " + row.presentName;
 }
 
 function renderTableRemoveLink(data, type, row){
