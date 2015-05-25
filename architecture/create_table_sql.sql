@@ -46,7 +46,12 @@ CREATE TABLE comment (
 );
 
 CREATE TABLE vote (
-  present_id INT NOT NULL
+  present_id INT NOT NULL,
+  user_id int not null
+);
+CREATE TABLE guest (
+  party_id INT NOT NULL,
+  user_id int not null
 );
 
 CREATE TABLE news (
