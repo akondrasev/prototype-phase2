@@ -21,6 +21,7 @@ CREATE TABLE party (
   PARTY_ADDRESS TEXT NOT NULL,
   PARTY_DEFAULT_MONEY INT,
   PARTY_IS_OPEN BOOL,
+  PARTY_DATE DATE,
   PRIMARY KEY( PARTY_ID ),
   CONSTRAINT fk_party_organizer FOREIGN KEY (PARTY_ORGANIZER) REFERENCES person (USER_ID)
 );
@@ -51,7 +52,16 @@ CREATE TABLE vote (
 );
 CREATE TABLE guest (
   party_id INT NOT NULL,
-  user_id int not null
+  user_id int not null,
+  state_id int not null,
+  CONSTRAINT fk_party_invite FOREIGN KEY (party_id) REFERENCES party (PARTY_ID),
+  CONSTRAINT fk_guset FOREIGN KEY (user_id) REFERENCES person (USER_ID),
+  CONSTRAINT fk_guest_state FOREIGN KEY (state_id) REFERENCES guestState (state_id)
+);
+CREATE TABLE guestState (
+  state_id INT NOT NULL,
+  state_name VARCHAR(50),
+  PRIMARY KEY( state_id )
 );
 
 CREATE TABLE news (
