@@ -38,7 +38,7 @@ public class PresentDaoImpl implements PresentDao {
     }
 
     @Override
-    public void savePresent(String presentName, Long presentCost, String presentPictureUrl) {
+    public void savePresent(String presentName, Long presentCost, String presentPictureUrl, Long partyId) {
 
     }
 

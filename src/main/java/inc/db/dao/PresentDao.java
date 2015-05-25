@@ -8,7 +8,7 @@ public interface PresentDao {
     Present getMostVotedPresentForParty(Long partyId);
     List<Present> getPresentsForParty(Long partyId);
 
-    void savePresent(String presentName, Long presentCost, String presentPictureUrl);
+    void savePresent(String presentName, Long presentCost, String presentPictureUrl, Long partyId);
 
     Present getPresent(Long presentId);
 
