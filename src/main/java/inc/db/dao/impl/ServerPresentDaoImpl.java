@@ -159,7 +159,7 @@ public class ServerPresentDaoImpl implements PresentDao {
 
     @Override
     public void voteForPresent(Long presentId, Long userId) {
-        /*String sql = "INSERT INTO vote (present_id, user_id) VALUES (?,?)";
+        String sql = "INSERT INTO vote (present_id, user_id) VALUES (?,?)";
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
@@ -178,7 +178,7 @@ public class ServerPresentDaoImpl implements PresentDao {
                     conn.close();
                 }catch(SQLException ex){}
             }
-        }*/
+        }
         //TODO voteForPresent
     }
 
