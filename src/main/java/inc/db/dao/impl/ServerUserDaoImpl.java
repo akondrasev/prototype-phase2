@@ -325,8 +325,7 @@ public class ServerUserDaoImpl implements UserDao{
 
     @Override
     public List<User> getAllUsers() {
-        String sql = "SELECT  USER_NAME, person.USER_ID, USER_EMAIL, USER_BANK\n" +
-                "FROM person";
+        String sql = String.format("SELECT * FROM person");
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
@@ -337,7 +336,6 @@ public class ServerUserDaoImpl implements UserDao{
                 User user = new User();
                 user.setUserName(rs.getString("USER_NAME"));
                 user.setUserId(rs.getLong("USER_ID"));
-                user.setIsGuest(rs.getBoolean("false"));
                 user.setUserEmail(rs.getString("USER_EMAIL"));
                 user.setUserBank(rs.getString("USER_BANK"));
                 list.add(user);
@@ -409,6 +407,11 @@ public class ServerUserDaoImpl implements UserDao{
                 }catch(SQLException ex){}
             }
         }
+    }
+
+    @Override
+    public void addGuestToParty(Long userId, Long partyId) {
+
     }
 
 }
