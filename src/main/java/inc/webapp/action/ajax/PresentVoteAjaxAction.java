@@ -20,7 +20,7 @@ public class PresentVoteAjaxAction extends AjaxBaseAction {
             logger.debug(String.format("user '%s' voted for present '%s'", user.getUserId(), presentId));
         }
 
-        presentDao.voteForPresent(presentId);
+        presentDao.voteForPresent(presentId, user.getUserId());
 
         jsonResult = "You have voted for present";
     }

@@ -7,6 +7,15 @@ public class Party {
     private Long partyOrganizerId;
     private String partyDate;
     private Long partyChosenPresentId;
+    private boolean partyIsOpen;
+
+    public boolean getPartyIsOpen() {
+        return partyIsOpen;
+    }
+
+    public void setPartyIsOpen(boolean partyIsOpen) {
+        this.partyIsOpen = partyIsOpen;
+    }
 
     private String partyAddress;
     private Long partyDefaultMoney;

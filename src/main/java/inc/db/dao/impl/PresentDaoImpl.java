@@ -53,7 +53,7 @@ public class PresentDaoImpl implements PresentDao {
     }
 
     @Override
-    public void voteForPresent(Long presentId) {
+    public void voteForPresent(Long presentId, Long userId) {
 
     }
 

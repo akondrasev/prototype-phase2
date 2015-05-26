@@ -1,5 +1,6 @@
 package inc.webapp.action.ajax;
 
+import inc.XConstants;
 import inc.db.dao.PresentDao;
 import inc.webapp.action.AjaxBaseAction;
 import org.apache.log4j.Logger;
@@ -25,7 +26,9 @@ public class PresentSaveAjaxAction extends AjaxBaseAction {
                     ,presentPictureUrl));
         }
 
-        presentDao.savePresent(presentName, presentCost, presentPictureUrl);
+        Long partyId = (Long) session.get(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID);
+
+        presentDao.savePresent(presentName, presentCost, presentPictureUrl, partyId);
 
         jsonResult = "Present saved successfully";
     }
