@@ -183,6 +183,9 @@ td.button-cell .btn{
 .row > [class^=col] > .row:not(:last-child) > [class^=col] {
     margin-bottom: 60px;
 }
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: #5c5c5c !important;
+}
 
 table[id^=parties] tbody{
     font-size: 0.8em;
