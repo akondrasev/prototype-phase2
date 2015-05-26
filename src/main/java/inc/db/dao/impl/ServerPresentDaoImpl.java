@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ServerPresentDaoImpl implements PresentDao {
     private DataSource dataSource;
-    public void setDataSource(javax.sql.DataSource dataSource){
+    public void setDataSource(DataSource dataSource){
         this.dataSource = dataSource;
     }
     @Override
@@ -88,10 +88,10 @@ public class ServerPresentDaoImpl implements PresentDao {
         try{
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, "PRESENT_NAME");
-            ps.setInt(2, Integer.parseInt("PRESENT_COST"));
-            ps.setInt(3, Integer.parseInt("PRESENT_FOR_PARTY"));
-            ps.setString(4, "PRESENT_PICTURE_URL");
+            ps.setString(1, presentName);
+            ps.setLong(2, presentCost);
+            ps.setLong(3, partyId);
+            ps.setString(4, presentPictureUrl);
             ps.executeUpdate();
             ps.close();
         }catch(SQLException ex){
@@ -138,7 +138,7 @@ public class ServerPresentDaoImpl implements PresentDao {
 
     @Override
     public void deletePresent(Long presentId) {
-        String sql = "DELETE FROM present WHERE PARTY_ID = ?";
+        String sql = "DELETE FROM present WHERE present_id = ?";
         Connection conn = null;
         try{
             conn = dataSource.getConnection();

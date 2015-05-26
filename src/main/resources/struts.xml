@@ -28,7 +28,19 @@
                 <param name="actionName">login</param>
                 <param name="namespace">/</param>
             </result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">error</param>
+                <param name="namespace">/</param>
+            </result>
         </global-results>
+
+        <!--<global-exception-mappings>-->
+            <!--<exception-mapping exception="java.lang.Exception" result="error"></exception-mapping>-->
+        <!--</global-exception-mappings>-->
+
+        <action name="error" class="errorAction">
+            <result name="success">WEB-INF/jsp/error.jsp</result>
+        </action>
 
         <action name="registration" class="registrationAction">
             <result name="success">WEB-INF/jsp/registration.jsp</result>

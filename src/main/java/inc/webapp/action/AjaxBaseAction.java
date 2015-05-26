@@ -1,14 +1,22 @@
 package inc.webapp.action;
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 
 public abstract class AjaxBaseAction extends BaseAction{
+    private static Logger logger = Logger.getLogger(AjaxBaseAction.class);
 
     protected String jsonResult;
 
     public String execute() throws IOException {
 
-        makeJson();
+        try {
+            makeJson();
+        } catch (Exception e){
+            logger.error("Exception while executing ajax action ",e);
+            return ERROR;
+        }
 
         response.setContentType("text/html");
         response.setHeader("Cache-Control", "no-cache");
@@ -16,7 +24,7 @@ public abstract class AjaxBaseAction extends BaseAction{
         try {
             response.getWriter().write(jsonResult);
         } catch (IOException ioe) {
-            ioe.printStackTrace();
+            logger.error("Exception while writing json result");
         }
 
         return NONE;

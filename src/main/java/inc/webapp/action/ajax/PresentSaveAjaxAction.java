@@ -18,15 +18,16 @@ public class PresentSaveAjaxAction extends AjaxBaseAction {
 
     @Override
     protected void makeJson() throws IOException {
+        Long partyId = (Long) session.get(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID);
+
         if(logger.isDebugEnabled()){
             logger.debug(String.format("user '%s' creates present", user.getUserName()));
             logger.debug(String.format("presentName = '%s', presentCost = '%s', presentPictureUrl = '%s'"
                     ,presentName
                     ,presentCost
                     ,presentPictureUrl));
+            logger.debug(String.format("creating present for party '%s'", partyId));
         }
-
-        Long partyId = (Long) session.get(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID);
 
         presentDao.savePresent(presentName, presentCost, presentPictureUrl, partyId);
 

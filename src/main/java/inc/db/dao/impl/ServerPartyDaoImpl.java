@@ -1,14 +1,17 @@
 package inc.db.dao.impl;
-        import inc.Utils;
-        import inc.db.dao.PartyDao;
-        import inc.db.model.Party;
-        import javax.sql.DataSource;
-        import java.sql.*;
-        import java.util.ArrayList;
-        import java.util.Date;
-        import java.util.List;
+
+import inc.db.dao.PartyDao;
+import inc.db.model.Party;
+import org.apache.log4j.Logger;
+
+import javax.sql.DataSource;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServerPartyDaoImpl implements PartyDao {
+    private static Logger logger = Logger.getLogger(ServerPartyDaoImpl.class);
+
     private DataSource dataSource;
     public void setDataSource(javax.sql.DataSource dataSource){
         this.dataSource = dataSource;
@@ -120,7 +123,7 @@ public class ServerPartyDaoImpl implements PartyDao {
 
     @Override
     public void updateParty(Party party) {
-        String sql = "UPDATE party SET PARTY_NAME = ?, PARTY_ORGANIZER= ?, PARTY_ADDRESS = ?, PARTY_DEFAULT_MONEY = ?, PARTY_IS_OPEN = ?, PARTY_DATE = ?  WHERE PARTY_ID = " + party.getPartyId();
+        String sql = "UPDATE party SET PARTY_NAME = ?, PARTY_ORGANIZER = ?, PARTY_ADDRESS = ?, PARTY_DEFAULT_MONEY = ?, PARTY_IS_OPEN = ?, PARTY_DATE = ?  WHERE PARTY_ID = " + party.getPartyId();
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
@@ -134,7 +137,7 @@ public class ServerPartyDaoImpl implements PartyDao {
             ps.executeUpdate();
             ps.close();
         }catch(SQLException ex){
-            throw new RuntimeException(ex);
+            throw new RuntimeException("SQL exception", ex);
         }finally{
             if(conn != null){
                 try{
@@ -146,15 +149,12 @@ public class ServerPartyDaoImpl implements PartyDao {
 
     @Override
     public Long createDraftEvent() {
-        String sql = "INSERT INTO party (PARTY_NAME, PARTY_ORGANIZER, PARTY_ADDRESS, USER_BANK) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO party (PARTY_NAME) VALUES (?)";
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, "Party");
-            ps.setInt(2, 0);
-            ps.setString(3, "none");
-            ps.setInt(4, 0);
+            ps.setString(1, "draft");
             ps.executeUpdate();
             ps.close();
         }catch(SQLException ex){
@@ -166,7 +166,7 @@ public class ServerPartyDaoImpl implements PartyDao {
                 }catch(SQLException ex){}
             }
         }
-        sql = "SELECT PARTY_ID FROM party LEFT JOIN person ON user_id = PARTY_ORGANIZER WHERE PARTY_ORGANIZER = "+ 0 +"ORDER BY PARTY_ID ASC limit 1";
+        sql = String.format("SELECT PARTY_ID FROM party where party_name = '%s'", "draft");
         conn = null;
 
         try{
@@ -193,12 +193,18 @@ public class ServerPartyDaoImpl implements PartyDao {
 
     @Override
     public List<Party> getUserParties(Long userId) {
-        String sql = "SELECT party.*, user_name FROM party" +
-                "LEFT JOIN person ON person.user_id = PARTY_ORGANIZER WHERE party.PARTY_ORGANIZER =" + userId;
+        String sql = String.format(
+                "SELECT party.*, user_name FROM party LEFT JOIN person ON person.user_id = party.PARTY_ORGANIZER WHERE party.PARTY_ORGANIZER = %s", userId);
         Connection conn = null;
+
         try{
             conn = dataSource.getConnection();
             Statement s = conn.createStatement();
+
+            if(logger.isDebugEnabled()){
+                logger.debug(String.format("Executing sql: '%s'", sql));
+            }
+
             ResultSet rs = s.executeQuery(sql);
             ArrayList<Party> list = new ArrayList<>();
             while(rs.next()){
@@ -216,12 +222,14 @@ public class ServerPartyDaoImpl implements PartyDao {
             s.close();
             return list;
         }catch(SQLException ex){
-            throw new RuntimeException(ex);
+            throw new RuntimeException("Error while loading user parties",ex);
         } finally{
             if(conn != null){
                 try{
                     conn.close();
-                }catch(SQLException ex){}
+                }catch(SQLException ex){
+                    throw new RuntimeException("Error while closing connection",ex);
+                }
             }
         }
     }

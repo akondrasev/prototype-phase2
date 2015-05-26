@@ -59,7 +59,7 @@ public class EventAction extends BaseAction{
         return SUCCESS;
     }
 
-    public String process(){
+    public String process() {
         if(user.getIsGuest()){
             return LOGIN;
         }
