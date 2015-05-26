@@ -251,10 +251,10 @@ public class ServerUserDaoImpl implements UserDao{
     public NewsCounts getNewsCountForUser(Long userId) {
         NewsCounts newsCounts = new NewsCounts();
         String sql = "SELECT  USER_ID, Count(i.invCount) as allInv, Count(r.reqCount) as allReq, Count(g.guestCount) as allGuest, Count(n.newsCount) as allNews" +
-                "FROM (((party INNER JOIN person ON PARTY_ORGANIZER = USER_ID" +
-        "LEFT JOIN (SELECT party_id, Count(party_id) AS invCount FROM (SELECT * FROM guest WHERE state_id = 1) AS t GROUP BY party_id) AS i ON party.PARTY_ID = i.party_id)" +
-        "LEFT JOIN (SELECT party_id, Count(party_id) AS reqCount FROM (SELECT * FROM guest WHERE state_id = 2) AS t GROUP BY party_id) AS r ON party.PARTY_ID = r.party_id)" +
-        "LEFT JOIN (SELECT party_id, Count(party_id) AS guestCount FROM (SELECT * FROM guest WHERE state_id = 3) AS t GROUP BY party_id) AS g ON party.PARTY_ID = g.party_id)" +
+                "FROM party INNER JOIN person ON PARTY_ORGANIZER = USER_ID" +
+        "LEFT JOIN (SELECT party_id, Count(party_id) AS invCount FROM (SELECT * FROM guest WHERE state_id = 1) AS t GROUP BY party_id) AS i ON party.PARTY_ID = i.party_id" +
+        "LEFT JOIN (SELECT party_id, Count(party_id) AS reqCount FROM (SELECT * FROM guest WHERE state_id = 2) AS t GROUP BY party_id) AS r ON party.PARTY_ID = r.party_id" +
+        "LEFT JOIN (SELECT party_id, Count(party_id) AS guestCount FROM (SELECT * FROM guest WHERE state_id = 3) AS t GROUP BY party_id) AS g ON party.PARTY_ID = g.party_id" +
         "LEFT JOIN (SELECT party_id, Count(party_id) AS newsCount FROM news AS t GROUP BY party_id) AS n ON party.PARTY_ID = n.party_id"+
         " GROUP BY USER_ID" +
         "HAVING USER_ID =" + userId;
