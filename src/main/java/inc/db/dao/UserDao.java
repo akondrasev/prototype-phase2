@@ -8,8 +8,13 @@ import java.util.Map;
 
 public interface UserDao {
     Long getAllUsersCount();
+
+    @Deprecated
     List<User> getPartyOrganizers(Long partyId);
+    @Deprecated
     List<User> getPartyParticipants(Long partyId);
+
+
     User getUserByLoginData(String email, String password);
     User getUserById(Long userId);
 

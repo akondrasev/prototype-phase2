@@ -22,6 +22,9 @@ public abstract class AjaxBaseAction extends BaseAction{
         response.setHeader("Cache-Control", "no-cache");
 
         try {
+            if(jsonResult != null && logger.isDebugEnabled()){
+                logger.debug(String.format("jsonResult: %s", jsonResult));
+            }
             response.getWriter().write(jsonResult);
         } catch (IOException ioe) {
             logger.error("Exception while writing json result");

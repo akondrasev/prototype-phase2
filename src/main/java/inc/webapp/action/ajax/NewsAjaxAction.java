@@ -23,8 +23,8 @@ public class NewsAjaxAction extends AjaxBaseAction {
         can see only own info
          */
         if(user.getUserId() != null && user.getUserId().equals(personId)){
-            NewsCounts newsCounts = userDao.getNewsCountForUser(personId);
-            jsonResult = gson.toJson(newsCounts);
+//            NewsCounts newsCounts = userDao.getNewsCountForUser(personId);
+//            jsonResult = gson.toJson(newsCounts);
         } else {
             jsonResult = getText("permission.denied");
         }

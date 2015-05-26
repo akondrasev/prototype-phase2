@@ -49,15 +49,16 @@ public class ServerPresentDaoImpl implements PresentDao {
 
     @Override
     public List<Present> getPresentsForParty(Long partyId) {
-        String sql = "SELECT * FROM present WHERE PRESENT_FOR_PARTY = "+partyId;
+        String sql = "SELECT * FROM present WHERE PRESENT_FOR_PARTY = " + partyId;
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
             Statement s = conn.createStatement();
-            Present p = null;
+
             ResultSet rs = s.executeQuery(sql);
             ArrayList<Present> list = new ArrayList<>();
-            if(rs.next()){
+            Present p = null;
+            while (rs.next()){
                 p = new Present();
                 p.setPictureUrl(rs.getString("PRESENT_PICTURE_URL"));
                 p.setPresentCost(rs.getLong("PRESENT_COST"));
