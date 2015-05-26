@@ -79,9 +79,24 @@
         <property name="userDao" ref="userDao"/>
     </bean>
 
-
-
-    <bean id="userDao" class="inc.db.dao.impl.UserDaoImpl" scope="singleton"/>
-    <bean id="partyDao" class="inc.db.dao.impl.PartyDaoImpl" scope="singleton"/>
-    <bean id="presentDao" class="inc.db.dao.impl.PresentDaoImpl" scope="singleton"/>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://imbi.ld.ttu.ee/prototype" />
+        <property name="username" value="t120957" />
+        <property name="password" value="zpius9Oc" />
+    </bean>
+    <bean id="userDao" class="inc.db.dao.impl.ServerUserDaoImpl" scope="singleton">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <bean id="partyDao" class="inc.db.dao.impl.ServerPartyDaoImpl" scope="singleton">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <bean id="presentDao" class="inc.db.dao.impl.ServerPresentDaoImpl" scope="singleton">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!--
+    <bean id="userDao" class="inc.db.dao.impl.ServerUserDaoImpl" scope="singleton"/>
+    <bean id="partyDao" class="inc.db.dao.impl.ServerPartyDaoImpl" scope="singleton"/>
+    <bean id="presentDao" class="inc.db.dao.impl.ServerPresentDaoImpl" scope="singleton"/>
+    -->
 </beans>
