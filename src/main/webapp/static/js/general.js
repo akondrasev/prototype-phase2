@@ -51,6 +51,22 @@ $(document).ready(function(){
     });
 });
 
+function addGuestToParty(personId, onSuccess){
+    $.ajax({
+        url: "ajax/addGuest.jsp",
+        type: "POST",
+        data: {
+            "partyId": partyId,
+            "personId": personId
+        },
+        success: function (response) {
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+        }
+    });
+}
+
 function removePartyAjax(partyId, onSuccess){
     $.ajax({
         url: "ajax/removeParty.jsp",

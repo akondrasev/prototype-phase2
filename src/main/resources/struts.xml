@@ -114,6 +114,7 @@
 
     <package name="ajax" extends="root" namespace="/ajax">
 
+        <action name="addGuest" class="guestAddAjaxAction"/>
         <action name="removeParty" class="partyRemoveAjaxAction"/>
         <action name="removeGuest" class="deleteGuestAjaxAction"/>
         <action name="getUsers" class="allUsersAjaxAction"/>

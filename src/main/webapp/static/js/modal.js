@@ -42,9 +42,11 @@ function presentModal(presentId){
 
 function addGuestsModal(){
     var modalTitle = "Choose Guests";
-    var modalContent = "users";
+    var modalContent = "<table id='add-guests-table'></table>";
 
     makeModal(modalTitle, modalContent);
+
+    initAllUsersTable('#add-guests-table');
 }
 
 function userModal(personId) {

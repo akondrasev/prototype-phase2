@@ -158,11 +158,49 @@ $(document).ready(function(){
 
 });
 
+function initAllUsersTable(tableId){
+    var allUsersTable = $(tableId);
+    if(allUsersTable != null){
+        allUsersTable.dataTable({
+            "ajax":{
+                url:"ajax/getUsers.jsp"
+            },
+            scrollX: "100%",
+            "columns": [
+                { "data": "userName", className:"btn btn-info table-btn add-guest-btn", render:renderTableUserLink },
+            ]
+        } );
+
+        $("thead", allUsersTable).hide();
+
+        allUsersTable.on("draw.dt", function(){
+            var addGuestBtn = $(".add-guest-btn");
+            addGuestBtn.click(function(e){
+
+                var icon = $("i", this);
+                icon.removeClass("glyphicon-user");
+
+                function onSuccess(msg){
+                    $.notify(msg, "success");
+                    icon.addClass("glyphicon-ok");
+                    global.guestsTable.fnDraw();
+
+                    $(this).unbind("click");
+                }
+
+                addGuestToParty(icon.attr("id"), onSuccess);
+            });
+        });
+
+        global.allUsersTable = allUsersTable;
+    }
+}
+
 function renderTableUserRemoveLink(data, type, row){
     return "<i id='"+ row.userId + "' class='glyphicon glyphicon-remove'></i>";
 }
 function renderTableUserLink(data, type, row){
-    return "<small><i id='"+row.userId+"' class='glyphicon glyphicon-user'></i></small>" + row.userName;
+    return "<small><i id='"+row.userId+"' class='glyphicon glyphicon-user'></i></small>" + row.userName + " - " + row.userEmail;
 }
 
 function renderTablePresentRemoveLink(data, type, row){

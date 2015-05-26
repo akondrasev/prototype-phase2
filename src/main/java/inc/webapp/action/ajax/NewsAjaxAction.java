@@ -26,7 +26,7 @@ public class NewsAjaxAction extends AjaxBaseAction {
 //            NewsCounts newsCounts = userDao.getNewsCountForUser(personId);
 //            jsonResult = gson.toJson(newsCounts);
         } else {
-            jsonResult = getText("permission.denied");
+//            jsonResult = getText("permission.denied");
         }
     }
 
