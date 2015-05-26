@@ -12,7 +12,10 @@ $(document).ready(function(){
             dataSrc:"",
             type: "POST"
         },
-        serverSide: true
+        serverSide: true,
+        oLanguage: {
+            sEmptyTable: ""
+        }
     } );
 
     var partiesTable = $('#parties');
