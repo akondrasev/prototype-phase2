@@ -31,4 +31,8 @@ public interface UserDao {
 
     void sendRequestForParty(Long partyId, Long userId);
     void deleteRequestFromUser(Long partyId, Long userId, Boolean isAccepted);
+
+    void removeInvite(Long partyId, Long userId, Boolean isAccepted);
+
+    List<UserAndPartyLink> getInvites(Long partyId, Long userId);
 }

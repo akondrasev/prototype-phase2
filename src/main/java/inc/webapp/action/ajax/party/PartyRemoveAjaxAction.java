@@ -1,4 +1,4 @@
-package inc.webapp.action.ajax;
+package inc.webapp.action.ajax.party;
 
 import inc.db.dao.PartyDao;
 import inc.webapp.action.AjaxBaseAction;

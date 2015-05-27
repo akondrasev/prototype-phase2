@@ -451,4 +451,69 @@ public class ServerUserDaoImpl implements UserDao{
             }
         }
     }
+
+    @Override
+    public void removeInvite(Long partyId, Long userId, Boolean isAccepted) {
+        String sql = "delete from invite where user_id = ? AND party_id = ?";
+        Connection conn = null;
+
+        try{
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setLong(1, userId);
+            ps.setLong(2, partyId);
+            ps.executeUpdate();
+            ps.close();
+
+            if(!isAccepted){
+                sql = "delete from guest where user_id = ? and party_id = ?";
+                ps = conn.prepareStatement(sql);
+                ps.setLong(1, userId);
+                ps.setLong(2, partyId);
+                ps.executeUpdate();
+                ps.close();
+            }
+
+        }catch(SQLException ex){
+            throw new RuntimeException(ex);
+        }finally{
+            if(conn != null){
+                try{
+                    conn.close();
+                }catch(SQLException ex){}
+            }
+        }
+    }
+
+
+    @Override
+    public List<UserAndPartyLink> getInvites(Long partyId, Long userId) {
+        String sql = String.format("SELECT * FROM invite left join party on party.party_id = invite.party_id left join person on person.user_id = invite.user_id where invite.user_id = %s", userId);
+        Connection conn = null;
+        try{
+            conn = dataSource.getConnection();
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+            ArrayList<UserAndPartyLink> list = new ArrayList<UserAndPartyLink>();
+            while(rs.next()){
+                UserAndPartyLink link = new UserAndPartyLink();
+                link.setPartyId(rs.getLong("PARTY_ID"));
+                link.setUserId(rs.getLong("USER_ID"));
+                link.setUserName(rs.getString("USER_NAME"));
+                link.setPartyName(rs.getString("PARTY_NAME"));
+                list.add(link);
+            }
+            rs.close();
+            s.close();
+            return list;
+        }catch(SQLException ex){
+            throw new RuntimeException(ex);
+        } finally{
+            if(conn != null){
+                try{
+                    conn.close();
+                }catch(SQLException ex){}
+            }
+        }
+    }
 }

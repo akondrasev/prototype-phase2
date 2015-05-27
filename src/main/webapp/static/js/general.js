@@ -43,6 +43,9 @@ $(document).ready(function(){
     if(userId != null && userId != "") {
         setInterval(getRequestsAjax, 2000);
     }
+    if(userId != null && userId != "") {
+        setInterval(getInvitesAjax, 2000);
+    }
 
     $(".present-link").click(function(e){
         presentModal($(this).attr("id"));
@@ -59,10 +62,23 @@ $(document).ready(function(){
     });
 
     $("#invites").click(function(e){
-//TODO click
+        invitesModal(userId);
     });
 });
 
+
+function removeInviteAjax(data, onSuccess){
+    $.ajax({
+        url: "ajax/removeInvite.jsp",
+        type: "POST",
+        data:data,
+        success: function (response) {
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+        }
+    });
+}
 function removeRequestAjax(data, onSuccess){
     $.ajax({
         url: "ajax/removeRequest.jsp",
@@ -72,8 +88,6 @@ function removeRequestAjax(data, onSuccess){
             if(onSuccess != null){
                 onSuccess(response);
             }
-            global.requests = response.length;
-            calculateNews();
         }
     });
 }
@@ -92,15 +106,28 @@ function getRequestsAjax(onSuccess){
         }
     });
 }
+function getInvitesAjax(onSuccess){
+    $.ajax({
+        url: "ajax/getInvites.jsp",
+        type: "POST",
+        dataType:"json",
+        success: function (response) {
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+            global.invites = response.length;
+            calculateNews();
+        }
+    });
+}
 
 
 function calculateNews(){
-    var newsCount =  global.requests;
+    var newsCount =  global.requests + global.invites;
 
     $("#newsCount").html(newsCount);
-    //$("#invitesCount").html(response.invitesCount);
+    $("#invitesCount").html(global.invites);
     $("#requestsCount").html(global.requests);
-    //$("#guestsCount").html(response.guestsCount);
 }
 
 function sendParticipateRequestAjax(partyId, onSuccess){

@@ -114,6 +114,10 @@
 
     <package name="ajax" extends="root" namespace="/ajax">
 
+        <action name="getInvites" class="invitesGetAjaxAction"/>
+        <action name="removeInvite" class="inviteRemoveAjaxAction"/>
+
+
         <action name="partiesWithUser" class="partiesWithUserAjaxAction"/>
         <action name="sendParticipateRequest" class="sendRequestAjaxAction"/>
         <action name="getRequests" class="getRequestsAjaxAction"/>

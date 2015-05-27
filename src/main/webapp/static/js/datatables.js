@@ -222,6 +222,65 @@ $(document).ready(function(){
 
 });
 
+function initInvitesTable(tableId){
+    var table = $(tableId);
+    if(table != null){
+        table.dataTable({
+            "ajax":{
+                url:"ajax/getInvites.jsp"
+            },
+            //scrollX: "100%",
+            "columns": [
+                { "data": "partyId" , render: renderInviteRow}
+            ]
+        } );
+
+        $('thead', table).hide();
+
+
+        table.on("draw.dt", function(){
+            var acceptBtn = $(".accept-btn",table);
+            var declineBtn = $(".decline-btn",table);
+
+            acceptBtn.click(function(e){
+                var partyId = $(this).attr("partyId");
+                console.log(userId,partyId);
+
+                function onSuccess(msg){
+                    $.notify(msg, "success");
+                    table.fnDraw();
+                }
+
+                var data = {
+                    partyId: partyId,
+                    isAccepted: true
+                }
+
+                removeInviteAjax(data, onSuccess);
+            });
+            declineBtn.click(function(e){
+                var partyId = $(this).attr("partyId");
+                console.log(userId,partyId);
+
+                function onSuccess(msg){
+                    $.notify(msg, "success");
+                    table.fnDraw();
+                }
+
+                var data = {
+                    partyId: partyId,
+                    isAccepted: false
+                }
+
+                removeInviteAjax(data, onSuccess);
+            });
+
+        });
+
+        global.inviteTable = table;
+    }
+}
+
 function initRequestsTable(tableId){
     var table = $(tableId);
     if(table != null){
@@ -390,6 +449,10 @@ function renderParticipateLink(data, type, row){
         return "<a href='login.jsp'>Login</a>"
     }
 
+}
+
+function renderInviteRow(data, type, row){
+    return "<button class='btn btn-info'>" + row.partyName + "</button><button userId='"+row.userId+"' partyId='"+row.partyId+"' class='btn btn-success accept-btn'>Accept</button><button userId='"+row.userId+"' partyId='"+row.partyId+"' class='btn btn-warning decline-btn'>Reject</button>";
 }
 
 

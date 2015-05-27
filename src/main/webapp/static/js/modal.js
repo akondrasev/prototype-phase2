@@ -49,6 +49,14 @@ function addGuestsModal(){
     initAllUsersTable('#add-guests-table');
 }
 
+function invitesModal(personId){
+    var modalTitle = "User data";
+    var modalContent = "<table id='invites-table' class='news'></table>";
+    makeModal(modalTitle, modalContent);
+
+    initInvitesTable("#invites-table");
+}
+
 function newsModal(personId){
 
     var modalTitle = "User data";
