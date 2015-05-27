@@ -19,13 +19,13 @@ public class ServerPartyDaoImpl implements PartyDao {
 
     @Override
     public List<Party> getPartiesWithUser(Long userId) {
-        String sql = "SELECT party.*, user_name FROM party INNER JOIN guest ON party.PARTY_ID = guest.party_id " +
-        "LEFT JOIN person ON person.user_id = PARTY_ORGANIZER WHERE (guest.user_id = " + userId + " AND state_id = 3) OR party.PARTY_ORGANIZER =" + userId;
+
+        String sql2 = String.format("select * from party left join guest on guest.party_id = party.party_id left join person on person.user_id = guest.user_id where guest.user_id = %s", userId);
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery(sql);
+            ResultSet rs = s.executeQuery(sql2);
             ArrayList<Party> list = new ArrayList<>();
             while(rs.next()){
                 Party p = new Party();

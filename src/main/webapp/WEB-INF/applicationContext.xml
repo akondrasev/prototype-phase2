@@ -11,7 +11,7 @@
         <property name="partyDao" ref="partyDao"/>
     </bean>
 
-    <bean id="userPartiesAjaxAction" class="inc.webapp.action.ajax.UserPartiesAjaxAction" scope="prototype">
+    <bean id="userPartiesAjaxAction" class="inc.webapp.action.ajax.user.UserPartiesAjaxAction" scope="prototype">
         <property name="partyDao" ref="partyDao"/>
     </bean>
     <bean id="partyRemoveAjaxAction" class="inc.webapp.action.ajax.PartyRemoveAjaxAction" scope="prototype">
@@ -21,14 +21,14 @@
     <bean id="profileAction" class="inc.webapp.action.base.ProfileAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
     </bean>
-    <bean id="deleteGuestAjaxAction" class="inc.webapp.action.ajax.GuestRemoveAjaxAction" scope="prototype">
+    <bean id="deleteGuestAjaxAction" class="inc.webapp.action.ajax.user.GuestRemoveAjaxAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
     </bean>
 
-    <bean id="allUsersAjaxAction" class="inc.webapp.action.ajax.AllUsersAjaxAction" scope="prototype">
+    <bean id="allUsersAjaxAction" class="inc.webapp.action.ajax.user.AllUsersAjaxAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
     </bean>
-    <bean id="guestsForPartyAjaxAction" class="inc.webapp.action.ajax.GuestsForPartyAjaxAction" scope="prototype">
+    <bean id="guestsForPartyAjaxAction" class="inc.webapp.action.ajax.user.GuestsForPartyAjaxAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
     </bean>
 
@@ -36,15 +36,15 @@
         <property name="partyDao" ref="partyDao"/>
     </bean>
 
-    <bean id="presentSaveAjaxAction" class="inc.webapp.action.ajax.PresentSaveAjaxAction" scope="prototype">
+    <bean id="presentSaveAjaxAction" class="inc.webapp.action.ajax.present.PresentSaveAjaxAction" scope="prototype">
         <property name="presentDao" ref="presentDao"/>
     </bean>
 
-    <bean id="mostWantedPresentForParty" class="inc.webapp.action.ajax.PresentInfoAjaxAction" scope="prototype">
+    <bean id="mostWantedPresentForParty" class="inc.webapp.action.ajax.present.PresentInfoAjaxAction" scope="prototype">
         <property name="presentDao" ref="presentDao"/>
     </bean>
 
-    <bean id="userDataAjaxAction" class="inc.webapp.action.ajax.UserDataAjaxAction" scope="prototype">
+    <bean id="userDataAjaxAction" class="inc.webapp.action.ajax.user.UserDataAjaxAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
     </bean>
 
@@ -52,20 +52,38 @@
         <property name="userDao" ref="userDao"/>
     </bean>
 
-    <bean id="guestAddAjaxAction" class="inc.webapp.action.ajax.GuestAddAjaxAction" scope="prototype">
+    <bean id="guestAddAjaxAction" class="inc.webapp.action.ajax.user.GuestAddAjaxAction" scope="prototype">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+    <bean id="sendRequestAjaxAction" class="inc.webapp.action.ajax.request.RequestSendAjaxAction" scope="prototype">
         <property name="userDao" ref="userDao"/>
     </bean>
 
-    <bean id="presentsForPartyAjaxAction" class="inc.webapp.action.ajax.PresentsForPartyAjaxAction" scope="prototype">
+    <bean id="getRequestsAjaxAction" class="inc.webapp.action.ajax.request.RequestsGetAjaxAction" scope="prototype">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+    <bean id="removeRequestAjaxAction" class="inc.webapp.action.ajax.request.RequestRemoveAjaxAction" scope="prototype">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <bean id="openPartiesAjaxAction" class="inc.webapp.action.ajax.OpenPartiesAjaxAction" scope="prototype">
+        <property name="partyDao" ref="partyDao"/>
+    </bean>
+    <bean id="partiesWithUserAjaxAction" class="inc.webapp.action.ajax.PartiesWithUserAjaxAction" scope="prototype">
+        <property name="partyDao" ref="partyDao"/>
+    </bean>
+
+
+    <bean id="presentsForPartyAjaxAction" class="inc.webapp.action.ajax.present.PresentsForPartyAjaxAction" scope="prototype">
         <property name="presentDao" ref="presentDao"/>
     </bean>
-    <bean id="deletePresentAjaxAction" class="inc.webapp.action.ajax.PresentDeleteAjaxAction" scope="prototype">
+    <bean id="deletePresentAjaxAction" class="inc.webapp.action.ajax.present.PresentDeleteAjaxAction" scope="prototype">
         <property name="presentDao" ref="presentDao"/>
     </bean>
-    <bean id="voteForPresentAjaxAction" class="inc.webapp.action.ajax.PresentVoteAjaxAction" scope="prototype">
+    <bean id="voteForPresentAjaxAction" class="inc.webapp.action.ajax.present.PresentVoteAjaxAction" scope="prototype">
         <property name="presentDao" ref="presentDao"/>
     </bean>
-    <bean id="votesForPresentAjaxAction" class="inc.webapp.action.ajax.PresentVotesGetAjaxAction" scope="prototype">
+    <bean id="votesForPresentAjaxAction" class="inc.webapp.action.ajax.present.PresentVotesGetAjaxAction" scope="prototype">
         <property name="presentDao" ref="presentDao"/>
     </bean>
 

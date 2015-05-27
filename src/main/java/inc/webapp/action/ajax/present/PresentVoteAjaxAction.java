@@ -1,4 +1,4 @@
-package inc.webapp.action.ajax;
+package inc.webapp.action.ajax.present;
 
 import inc.db.dao.PresentDao;
 import inc.webapp.action.AjaxBaseAction;
@@ -6,8 +6,8 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 
-public class PresentDeleteAjaxAction extends AjaxBaseAction{
-    private static Logger logger = Logger.getLogger(PresentDeleteAjaxAction.class);
+public class PresentVoteAjaxAction extends AjaxBaseAction {
+    private static Logger logger = Logger.getLogger(PresentVoteAjaxAction.class);
 
     private PresentDao presentDao;
 
@@ -17,17 +17,13 @@ public class PresentDeleteAjaxAction extends AjaxBaseAction{
     protected void makeJson() throws IOException {
 
         if(logger.isDebugEnabled()){
-            logger.debug(String.format("deleting present '%s'", presentId));
+            logger.debug(String.format("user '%s' voted for present '%s'", user.getUserId(), presentId));
         }
 
-        presentDao.deletePresent(presentId);
-        jsonResult = "Present removed";
+        presentDao.voteForPresent(presentId, user.getUserId());
+
+        jsonResult = "You have voted for present";
     }
-
-
-
-
-
 
     public PresentDao getPresentDao() {
         return presentDao;

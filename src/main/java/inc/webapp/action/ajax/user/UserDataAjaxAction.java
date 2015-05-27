@@ -1,4 +1,4 @@
-package inc.webapp.action.ajax;
+package inc.webapp.action.ajax.user;
 
 import inc.db.dao.UserDao;
 import inc.webapp.action.AjaxBaseAction;

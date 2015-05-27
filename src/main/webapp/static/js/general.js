@@ -10,6 +10,8 @@ $(document).ready(function(){
 
     if(readonly){
         $("input").attr("disabled", "disabled");
+        $(".btn").hide();
+        $("input[type=checkbox]").hide();
     }
 
     userId = $("#user-id-span").html();
@@ -39,7 +41,7 @@ $(document).ready(function(){
     });
 
     if(userId != null && userId != "") {
-        setInterval(getNewsCounts, 2000);
+        setInterval(getRequestsAjax, 2000);
     }
 
     $(".present-link").click(function(e){
@@ -49,7 +51,73 @@ $(document).ready(function(){
     $(".user-link").click(function(e){
         userModal($(this).attr("id"));
     });
+
+    makeButtonForModal($("#requests"));
+    makeButtonForModal( $("#invites"));
+    $("#requests").click(function(e){
+        newsModal(userId);
+    });
+
+    $("#invites").click(function(e){
+//TODO click
+    });
 });
+
+function removeRequestAjax(data, onSuccess){
+    $.ajax({
+        url: "ajax/removeRequest.jsp",
+        type: "POST",
+        data:data,
+        success: function (response) {
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+            global.requests = response.length;
+            calculateNews();
+        }
+    });
+}
+
+function getRequestsAjax(onSuccess){
+    $.ajax({
+        url: "ajax/getRequests.jsp",
+        type: "POST",
+        dataType:"json",
+        success: function (response) {
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+            global.requests = response.length;
+            calculateNews();
+        }
+    });
+}
+
+
+function calculateNews(){
+    var newsCount =  global.requests;
+
+    $("#newsCount").html(newsCount);
+    //$("#invitesCount").html(response.invitesCount);
+    $("#requestsCount").html(global.requests);
+    //$("#guestsCount").html(response.guestsCount);
+}
+
+function sendParticipateRequestAjax(partyId, onSuccess){
+    $.ajax({
+        url: "ajax/sendParticipateRequest.jsp",
+        type: "POST",
+        data: {
+            "partyId": partyId,
+            "personId": userId
+        },
+        success: function (response) {
+            if(onSuccess != null){
+                onSuccess(response);
+            }
+        }
+    });
+}
 
 function addGuestToParty(personId, onSuccess){
     $.ajax({

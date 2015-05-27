@@ -1,4 +1,4 @@
-package inc.webapp.action.ajax;
+package inc.webapp.action.ajax.present;
 
 import inc.XConstants;
 import inc.db.dao.PresentDao;

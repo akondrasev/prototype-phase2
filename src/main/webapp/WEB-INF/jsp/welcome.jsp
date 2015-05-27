@@ -56,6 +56,15 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1><i class="glyphicon glyphicon-th-list"></i> You will go</h1>
+
+                        <table id="participating-parties" class="table table-hover">
+                        </table>
+                </div>
+            </div>
+
         </div>
 
     </div>

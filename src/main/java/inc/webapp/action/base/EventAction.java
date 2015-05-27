@@ -25,7 +25,7 @@ public class EventAction extends BaseAction{
 
     public String execute(){
 
-        if(user.getIsGuest()){
+        if(id == null && user.getIsGuest()){
             return LOGIN;
         }
 
@@ -50,9 +50,7 @@ public class EventAction extends BaseAction{
             readonly = true;
         }
 
-        if(session.get(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID) == null){
-            session.put(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID, partyId);
-        }
+        session.put(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID, partyId);
 
         setActionMessages((Collection<String>) session.get(XConstants.SESSION_ATTRIBUTE_KEY_MSG));
         session.remove(XConstants.SESSION_ATTRIBUTE_KEY_MSG);
@@ -79,12 +77,14 @@ public class EventAction extends BaseAction{
         party.setPartyDefaultMoney(partyDefaultMoney);
         party.setPartyName(partyName);
         party.setPartyOrganizerId(user.getUserId());
+        party.setPartyIsOpen(partyIsOpen);
 
         partyDao.updateParty(party);
 
         addActionMessage("Party is successfully added");
 
         session.put(XConstants.SESSION_ATTRIBUTE_KEY_MSG, getActionMessages());
+        session.remove(XConstants.SESSION_ATTRIBUTE_KEY_PARTY_ID, partyId);
 
         return SUCCESS;
     }

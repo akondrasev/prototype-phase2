@@ -21,12 +21,71 @@ $(document).ready(function(){
     var partiesTable = $('#parties');
     var presentsTable = $('#presents');
     var guestsTable = $("#guests");
+    var yourPartiesTable = $("#participating-parties");
+
+
+
+    /*
+     party table
+     */
+    if(yourPartiesTable != null){
+        yourPartiesTable.dataTable({
+            "ajax":{
+                url:"ajax/partiesWithUser.jsp"
+            },
+            scrollX: "100%",
+            "columns": [
+                { "data": "partyName", title:"<i class='glyphicon glyphicon-list-alt'></i> Name", render:renderTablePartyLink },
+                { "data": "partyAddress", title:"<i class='glyphicon glyphicon-pencil'></i> Address" },
+                { "data": "partyDate", title:"<i class='glyphicon glyphicon-calendar'></i> Date" },
+                { "data": "partyId", title:"<i class='glyphicon glyphicon-remove-sign'></i> Delete?", "render": renderTableRemoveLink}
+            ]
+        } );
+
+        yourPartiesTable.on("draw.dt", function(){
+            var removePartyLink = $(".remove-party-link",yourPartiesTable);
+            var userLink = $(".user-link",yourPartiesTable);
+
+            makeButtonForModal(userLink);
+
+            removePartyLink.click(function(e){
+                var id = $(this).attr("id");
+
+                function onSuccess(msg){
+                    $.notify(msg);
+                    yourPartiesTable.fnDraw();
+                }
+
+                removePartyAjax(id, onSuccess);
+            });
+
+            if(userLink != null){
+                userLink.click(function(e){
+                    e.preventDefault();
+                    userModal($(this).attr("id"));
+                });
+            }
+        });
+
+        global.yourPartiesTable = yourPartiesTable;
+    }
 
 
     /*
      guests
      */
     if(guestsTable != null){
+        var columns = [];
+        if(readonly){
+            columns = [
+                { "data": "userName", className:"btn btn-info user-link table-btn", render:renderTableUserLink},
+            ]
+        } else {
+            columns = [
+                { "data": "userName", className:"btn btn-info user-link table-btn", render:renderTableUserLink},
+                { "data": "userId", className:"btn btn-danger remove-user-link", render:renderTableUserRemoveLink}
+            ]
+        }
         guestsTable.dataTable({
             "ajax":{
                 url:"ajax/getGuests.jsp",
@@ -34,10 +93,7 @@ $(document).ready(function(){
                     data.partyId = partyId;
                 }
             },
-            "columns": [
-                { "data": "userName", className:"btn btn-info user-link table-btn", render:renderTableUserLink},
-                { "data": "userId", className:"btn btn-danger remove-user-link", render:renderTableUserRemoveLink}
-            ]
+            "columns": columns
         });
         $("thead", guestsTable).hide();
 
@@ -71,6 +127,18 @@ $(document).ready(function(){
     present table
      */
     if(presentsTable != null){
+        var columns = [];
+        if(readonly){
+            columns = [
+                { "data": "presentName", className:"btn btn-info present-link table-btn", render:renderTablePresentLink},
+            ]
+        } else {
+            columns = [
+                { "data": "presentName", className:"btn btn-info present-link table-btn", render:renderTablePresentLink},
+                { "data": "presentId", className:"btn btn-danger remove-present-link", render:renderTablePresentRemoveLink}
+            ]
+        }
+
         presentsTable.dataTable({
             "ajax":{
                 url:"ajax/presentsForParty.jsp",
@@ -78,10 +146,7 @@ $(document).ready(function(){
                     data.partyId = partyId;
                 }
             },
-            "columns": [
-                { "data": "presentName", className:"btn btn-info present-link table-btn", render:renderTablePresentLink},
-                { "data": "presentId", className:"btn btn-danger remove-present-link", render:renderTablePresentRemoveLink}
-            ]
+            "columns": columns
         });
         $("thead", presentsTable).hide();
 
@@ -129,7 +194,6 @@ $(document).ready(function(){
 
         partiesTable.on("draw.dt", function(){
             var removePartyLink = $(".remove-party-link",partiesTable);
-            var partyLink = $(".party-link",partiesTable);
             var userLink = $(".user-link",partiesTable);
 
             makeButtonForModal(userLink);
@@ -158,12 +222,132 @@ $(document).ready(function(){
 
 });
 
+function initRequestsTable(tableId){
+    var table = $(tableId);
+    if(table != null){
+        table.dataTable({
+            "ajax":{
+                url:"ajax/getRequests.jsp"
+            },
+            //scrollX: "100%",
+            "columns": [
+                { "data": "partyId" , render: renderRequestRow}
+            ]
+        } );
+
+        $('thead', table).hide();
+
+
+        table.on("draw.dt", function(){
+            var acceptBtn = $(".accept-btn",table);
+            var declineBtn = $(".decline-btn",table);
+
+            acceptBtn.click(function(e){
+                var userId = $(this).attr("userId");
+                var partyId = $(this).attr("partyId");
+                console.log(userId,partyId);
+
+                function onSuccess(msg){
+                    $.notify(msg, "success");
+                    table.fnDraw();
+                }
+
+                var data = {
+                    partyId: partyId,
+                    personId:userId,
+                    isAccepted: true
+                }
+
+                removeRequestAjax(data, onSuccess);
+            });
+            declineBtn.click(function(e){
+                var userId = $(this).attr("userId");
+                var partyId = $(this).attr("partyId");
+                console.log(userId,partyId);
+
+                function onSuccess(msg){
+                    $.notify(msg, "success");
+                    table.fnDraw();
+                }
+
+                var data = {
+                    partyId: partyId,
+                    personId:userId,
+                    isAccepted: false
+                }
+
+                removeRequestAjax(data, onSuccess);
+            });
+
+        });
+
+        global.requestsTable = table;
+    }
+}
+
+
+function initOpenPartiesTable(tableId){
+    var openPartiesTable = $(tableId);
+    if(openPartiesTable != null){
+        openPartiesTable.dataTable({
+            "ajax":{
+                url:"ajax/getOpenParties.jsp"
+            },
+            //scrollX: "100%",
+            "columns": [
+                { "data": "partyName", title:"<i class='glyphicon glyphicon-list-alt'></i> Name", render:renderTablePartyLink },
+                { "data": "partyAddress", title:"<i class='glyphicon glyphicon-pencil'></i> Address" },
+                { "data": "partyDate", title:"<i class='glyphicon glyphicon-calendar'></i> Date" },
+                { "data": "partyId", title:"<i class='glyphicon glyphicon-plus'></i> Want participate?", "render": renderParticipateLink}
+            ]
+        } );
+
+
+        openPartiesTable.on("draw.dt", function(){
+            var participateBtn = $(".participate-btn",openPartiesTable);
+            var userLink = $(".user-link",openPartiesTable);
+
+            makeButtonForModal(userLink);
+
+            participateBtn.click(function(e){
+                var id = $(this).attr("id");
+                var icon = $("i", this);
+                var thisLink = $(this);
+
+                function onSuccess(msg){
+                    $.notify(msg, "success");
+                    icon.removeClass("glyphicon-plus");
+                    icon.addClass("glyphicon-ok");
+                    icon.addClass("green");
+                    thisLink.unbind("click");
+                    thisLink.attr("disabled", "disabled");
+                    //openPartiesTable.fnDraw();
+                }
+
+                sendParticipateRequestAjax(id, onSuccess);
+            });
+
+            if(userLink != null){
+                userLink.click(function(e){
+                    e.preventDefault();
+                    userModal($(this).attr("id"));
+                });
+            }
+        });
+
+        global.openPartiesTable = openPartiesTable;
+    }
+}
+
 function initAllUsersTable(tableId){
     var allUsersTable = $(tableId);
     if(allUsersTable != null){
         allUsersTable.dataTable({
             "ajax":{
-                url:"ajax/getUsers.jsp"
+                url:"ajax/getUsers.jsp",
+                data: {
+                    partyId: partyId
+                }
             },
             scrollX: "100%",
             "columns": [
@@ -179,13 +363,16 @@ function initAllUsersTable(tableId){
 
                 var icon = $("i", this);
                 icon.removeClass("glyphicon-user");
+                var thisBtn = $(this);
 
                 function onSuccess(msg){
                     $.notify(msg, "success");
                     icon.addClass("glyphicon-ok");
+                    thisBtn.removeClass("btn-info");
+                    thisBtn.addClass("btn-success");
                     global.guestsTable.fnDraw();
 
-                    $(this).unbind("click");
+                    thisBtn.unbind("click");
                 }
 
                 addGuestToParty(icon.attr("id"), onSuccess);
@@ -194,6 +381,20 @@ function initAllUsersTable(tableId){
 
         global.allUsersTable = allUsersTable;
     }
+}
+
+function renderParticipateLink(data, type, row){
+    if(!readonly){
+        return "<a id='"+row.partyId+"' class='participate-btn'><i class='glyphicon glyphicon-plus'></i> Participate</a>";
+    } else {
+        return "<a href='login.jsp'>Login</a>"
+    }
+
+}
+
+
+function renderRequestRow(data, type, row){
+    return "<button class='btn btn-info'>" +row.userName+" - " + row.partyName + "</button><button userId='"+row.userId+"' partyId='"+row.partyId+"' class='btn btn-success accept-btn'>Accept</button><button userId='"+row.userId+"' partyId='"+row.partyId+"' class='btn btn-warning decline-btn'>Reject</button>";
 }
 
 function renderTableUserRemoveLink(data, type, row){

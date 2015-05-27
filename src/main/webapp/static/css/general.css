@@ -192,7 +192,8 @@ table[id^=parties] tbody{
 }
 table#presents , table#presents td,   table#presents tr,
 table#guests , table#guests td,   table#guests tr,
-table#add-guests-table , table#add-guests-table td,   table#add-guests-table tr{
+table#add-guests-table , table#add-guests-table td,   table#add-guests-table tr,
+table.news , table.news td,   table.news tr{
     border: none;
 }
 table#presents td:not(:first-child), table#guests td:not(:first-child),  table#add-guests-table td:not(:first-child){

@@ -1,26 +1,33 @@
-package inc.webapp.action.ajax;
+package inc.webapp.action.ajax.present;
 
 import inc.db.dao.PresentDao;
-import inc.db.model.Present;
 import inc.webapp.action.AjaxBaseAction;
 import org.apache.log4j.Logger;
 
-public class PresentInfoAjaxAction extends AjaxBaseAction {
-    private static Logger logger = Logger.getLogger(PresentInfoAjaxAction.class);
+import java.io.IOException;
 
-    private Long presentId;
+public class PresentDeleteAjaxAction extends AjaxBaseAction{
+    private static Logger logger = Logger.getLogger(PresentDeleteAjaxAction.class);
+
     private PresentDao presentDao;
 
+    private Long presentId;
+
     @Override
-    protected void makeJson() {
+    protected void makeJson() throws IOException {
 
         if(logger.isDebugEnabled()){
-            logger.debug(String.format("getting info for present '%s'", presentId));
+            logger.debug(String.format("deleting present '%s'", presentId));
         }
 
-        Present present = presentDao.getPresent(presentId);
-        jsonResult = gson.toJson(present);
+        presentDao.deletePresent(presentId);
+        jsonResult = "Present removed";
     }
+
+
+
+
+
 
     public PresentDao getPresentDao() {
         return presentDao;

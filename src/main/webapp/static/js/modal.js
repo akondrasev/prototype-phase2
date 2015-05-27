@@ -49,6 +49,15 @@ function addGuestsModal(){
     initAllUsersTable('#add-guests-table');
 }
 
+function newsModal(personId){
+
+    var modalTitle = "User data";
+    var modalContent = "<table id='requests-table' class='news'></table>";
+    makeModal(modalTitle, modalContent);
+
+    initRequestsTable("#requests-table");
+}
+
 function userModal(personId) {
 
     function drawUserModal(userJson){

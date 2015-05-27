@@ -7,6 +7,9 @@ import com.opensymphony.xwork2.interceptor.Interceptor;
 import inc.XConstants;
 import inc.db.model.User;
 import inc.webapp.action.BaseAction;
+import inc.webapp.action.base.HomeAction;
+import inc.webapp.action.base.LoginAction;
+import inc.webapp.action.base.RegistrationAction;
 
 import java.util.Map;
 
@@ -40,8 +43,12 @@ public class AuthenticationInterceptor implements Interceptor {
             ((UserAware) action).setUser(user);
         }
 
-        if (action instanceof BaseAction) {
-            ((BaseAction) action).reflectionTask();
+        if (action instanceof BaseAction &&
+                !(action instanceof LoginAction) &&
+                !(action instanceof RegistrationAction) &&
+                !(action instanceof HomeAction) &&
+                user.getIsGuest()) {
+            ((BaseAction) action).setReadonly(true);
         }
 
         return actionInvocation.invoke();

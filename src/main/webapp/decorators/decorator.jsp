@@ -92,7 +92,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <s:if test="!user.isGuest">
                             <li>
-                                <a href="#">
+                                <a id="invites">
                                     <i class="glyphicon glyphicon-list-alt"></i> <s:text name="invites"/>
                                     <span id="invitesCount" class="badge">
                                         <s:property value="user.invitesCount"/>
@@ -100,18 +100,10 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a id="requests">
                                     <i class="glyphicon glyphicon-list-alt"></i> <s:text name="requests"/>
                                     <span id="requestsCount" class="badge">
                                         <s:property value="user.requestsCount"/>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-user"></i> <s:text name="guests"/>
-                                    <span id="guestsCount" class="badge">
-                                        <s:property value="user.guestsCount"/>
                                     </span>
                                 </a>
                             </li>

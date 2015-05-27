@@ -23,7 +23,6 @@ CREATE TABLE party (
   PARTY_IS_OPEN BOOL,
   PARTY_DATE VARCHAR(50),
   PRIMARY KEY( PARTY_ID ),
-  CONSTRAINT fk_party_organizer FOREIGN KEY (PARTY_ORGANIZER) REFERENCES person (USER_ID)
 );
 
 create TABLE present (
@@ -33,7 +32,6 @@ create TABLE present (
   PRESENT_FOR_PARTY INT,
   PRESENT_PICTURE_URL VARCHAR(500),
   PRIMARY KEY( PRESENT_ID ),
-  CONSTRAINT fk_present_for_party FOREIGN KEY (PRESENT_FOR_PARTY) REFERENCES party (PARTY_ID)
 );
 
 CREATE TABLE comment (
@@ -42,8 +40,6 @@ CREATE TABLE comment (
   COMMENT_FOR_PRESENT INT,
   COMMENT_TEXT TEXT,
   PRIMARY KEY( COMMENT_ID ),
-  CONSTRAINT fk_comment_author FOREIGN KEY (COMMENT_AUTHOR) REFERENCES person (USER_ID),
-  CONSTRAINT fk_comment_for_present FOREIGN KEY (COMMENT_FOR_PRESENT) REFERENCES present (PRESENT_ID)
 );
 
 CREATE TABLE vote (
@@ -54,9 +50,6 @@ CREATE TABLE guest (
   party_id INT,
   user_id int,
   state_id int,
-  CONSTRAINT fk_party_invite FOREIGN KEY (party_id) REFERENCES party (PARTY_ID),
-  CONSTRAINT fk_guset FOREIGN KEY (user_id) REFERENCES person (USER_ID),
-  CONSTRAINT fk_guest_state FOREIGN KEY (state_id) REFERENCES guestState (state_id)
 );
 -- CREATE TABLE guestState ( DEPRECATED('not discussed')
 --   state_id INT NOT NULL,
@@ -67,5 +60,15 @@ CREATE TABLE guest (
 CREATE TABLE news (
   news_id NUMERIC(10,0) NOT NULL DEFAULT nextval('news_id_seq'),
   user_email VARCHAR(50),
+  party_id INT
+);
+
+create TABLE invite (
+  user_id int,
+  party_id INT
+);
+
+create TABLE request (
+  user_id int,
   party_id INT
 );
