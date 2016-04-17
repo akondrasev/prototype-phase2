@@ -11,8 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Event MANAGER - <decorator:title/></title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/DataTables/datatables.css"/>
 
-    <%--bootstrap & jquery--%>
+<%--bootstrap & jquery--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/bootstrap-cosmo.css"/>
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/plugins/jquery-2.1.1.js"></script>
@@ -20,11 +21,8 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.js"></script>
 
     <%--datatable--%>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/plugins/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/plugins/dataTables.bootstrap.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/dataTables.bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/jquery.dataTables.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/DataTables/datatables.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/DataTables/dataTables.colResize.js"></script>
 
 <%--datepicker--%>
     <script src="${pageContext.request.contextPath}/static/js/plugins/moment-with-locales.js"></script>

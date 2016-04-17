@@ -4,8 +4,8 @@ $(document).ready(function(){
     console.log("datatables.js - ready");
 
     $.extend( $.fn.dataTable.defaults, {
-        "searching": false,
-        "ordering": false,
+        searching: false,
+        ordering: false,
         paging: false,
         info:false,
         ajax:{
@@ -15,6 +15,20 @@ $(document).ready(function(){
         serverSide: true,
         oLanguage: {
             sEmptyTable: ""
+        },
+        colReorder: true,
+        fixedColumns: {
+            leftColumns: 2
+        },
+        dom: 'Zlfrtip',
+        scrollX: true,
+        "colResize": {
+            "tableWidthFixed": false,
+            "rtl": true,
+            "resizeCallback": function(column) {
+                console.log(column);
+                return false;
+            }
         }
     } );
 
@@ -78,7 +92,7 @@ $(document).ready(function(){
         var columns = [];
         if(readonly){
             columns = [
-                { "data": "userName", className:"btn btn-info user-link table-btn", render:renderTableUserLink},
+                { "data": "userName", className:"btn btn-info user-link table-btn", render:renderTableUserLink}
             ]
         } else {
             columns = [
