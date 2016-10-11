@@ -15,20 +15,6 @@ $(document).ready(function(){
         serverSide: true,
         oLanguage: {
             sEmptyTable: ""
-        },
-        colReorder: true,
-        fixedColumns: {
-            leftColumns: 2
-        },
-        dom: 'Zlfrtip',
-        scrollX: true,
-        "colResize": {
-            "tableWidthFixed": false,
-            "rtl": true,
-            "resizeCallback": function(column) {
-                console.log(column);
-                return false;
-            }
         }
     } );
 
